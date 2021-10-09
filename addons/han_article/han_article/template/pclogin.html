@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="format-detection" content="telephone=no"/>
+        <title>{$_SESSION['sitetitle']}</title>
+        <!-- 基础样式及JS -->
+        <link rel="stylesheet" href="../addons/han_article/template/css/cool.css">
+        <link rel="stylesheet" href="../addons/han_article/template/css/box.css">
+        <link rel="stylesheet" href="../addons/han_article/template/css/color.css">
+        <link rel="stylesheet" href="../addons/han_article/template/css/spe.css">
+        <link rel="stylesheet" href="../addons/han_article/template/css/self.css">
+	</head> 
+	<body class="c-wh">
+	<div style="margin-top: 150px;">
+	<h2 style="text-align: center; font-size: 2em;">会员登录</h2>
+	</div>
+  <form class="form-horizontal form" action="" method="post" enctype="multipart/form-data">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <input type="hidden" name="id" value="{$item[id]}">
+                <input type="hidden" name="weid" value="13">
+                 <div class="box_content w8">
+            <p class="w4 area_auto mart10">
+                <span class="w10 c-wh uba ub-999 uc-a03 tx-c umh3">
+                    <input type="text" id="uname" name="uname" placeholder="请输入用户id" class="c-wh w9 ubnone umh3 ftz10">
+                </span>
+            </p>
+            <p class="w4 area_auto mart10">
+                <span class="w10 c-wh uba ub-999 uc-a03 tx-c umh3">
+                    <input type="password" id="pwd" name="pwd" placeholder="输入会员账号密码" class="c-wh w9 ubnone umh3 ftz10">
+                </span>
+            </p>
+			<p class="w4 area_auto mart10"  style="line-height: 20px;">
+                    <input type="checkbox"  value="santian" id="miandeng" style="width: 20px; height: 20px;" />三天免登陆
+            </p>
+        </div>
+
+            </div>
+        </div> 
+
+        <div class="form-group">
+            <div class="col-sm-12" style="width:100%; text-align:center;">
+                <input name="submit" type="submit" value="立即登录" class="btn btn-primary col-lg-1" style=" background-color:#000; color:#FFF; width:33%; height:48px; margin-top:20px; font-size:18px;">
+                <input type="hidden" name="token" value="{$_W['token']}"/>
+            </div>
+        </div>
+       
+    </form>
+	</body>
+<script type="text/javascript" src="../addons/han_article/js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" >
+function login(){
+	var uname=$('#uname').val();
+	var pwd=$('#pwd').val();
+	var santian=$('#miandeng:checked').val();
+	if(uname==''){
+		alert('用户名不能为空');
+		return false;
+	}
+	if(pwd==''){
+		alert('密码不能为空');
+		return false;
+	}
+}
+
+</script>
+</html>

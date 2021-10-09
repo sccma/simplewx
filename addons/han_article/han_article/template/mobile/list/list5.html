@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>{if !empty($title)} {$title} {elseif !empty($_W['page']['title'])} {$_W['page']['title']}{/if}{if !empty($_W['page']['sitename'])} - {$_W['page']['sitename']}{else} - {$_W['account']['name']}{/if}{if IMS_FAMILY != 'x'} - Powered by WE7.CC{/if}</title>
+
+	<meta name="format-detection" content="telephone=no, address=no">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+	<meta name="apple-touch-fullscreen" content="yes"/>
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="keywords" content="{if empty($_W['page']['keywords'])}{if IMS_FAMILY != 'x'}微擎,微信,微信公众平台,we7.cc{/if}{else}{$_W['page']['keywords']}{/if}" />
+
+	<meta name="description" content="{if empty($_W['page']['description'])}{if IMS_FAMILY != 'x'}公众平台自助引擎（www.we7.cc），简称微擎，微擎是一款免费开源的微信公众平台管理系统，是国内最完善移动网站及移动互联网技术解决方案。{/if}{else}{$_W['page']['description']}{/if}" />
+
+	<link rel="shortcut icon" href="{$_W['siteroot']}{$_W['config']['upload']['attachdir']}/{if !empty($_W['setting']['copyright']['icon'])}{$_W['setting']['copyright']['icon']}{else}images/global/wechat.jpg{/if}" />
+
+        <link href="{$_W['siteroot']}/addons/han_article/css/style.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{MODULE_URL}images/weui.css">
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<style type="text/css">
+a:hover{text-decoration:none;}
+
+body,h1, h2, h3, h4, h5, h6, a,.h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: "微软雅黑";
+	}
+body{
+line-height: 1.6;
+}
+.weui_media_box .weui_media_title{
+   margin-bottom: 8px;}
+	.container{
+		width: 100%;
+		height: 100%;
+		padding: 0;
+	}
+
+	.carousel-caption{
+		left: 0;
+		padding-left: 10px;
+	    text-align: left;
+	    bottom: 0;
+	    width: 100%;
+	    padding-bottom: 10px;
+		background-image: -webkit-linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+		background-image: -o-linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+		background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+
+	}
+
+	.carousel-indicators{
+		width: auto;
+		left: 90%;
+		bottom:10px;
+		position: absolute;
+		right: 15px;
+	}
+	.icon_dot {
+	    display: inline-block;
+	    vertical-align: middle;
+	    width: 6px;
+	    height: 6px;
+	    border-radius: 3px;
+	    background-color: #d0cdd1;
+	}
+	.icon_dot.active {
+	    background-color: #6a666f;
+	}
+	.indicator a, .indicator a:active {
+	    margin-left: 6px;
+	    width: 6px;
+		height: 6px;
+		background: none;
+	}
+	.indicator a.active i,  .indicator a.active i{
+		background-color: #6a666f;
+	}
+	.carousel-indicators .active{
+		background: none;
+	}
+ /***********底部导航**************/
+.bottom,.bottom11{
+width:100%;
+height:45px;
+border:1px solid #ddd;
+display: -webkit-box;
+background:#fff;
+margin:0 auto;
+z-index:666;position:fixed; bottom:0px;
+}
+
+.post-btn-v3 {
+    -webkit-box-flex: 1;
+    color: #3c3c3c;
+    font-size: 13px;
+    width: 0;
+    text-align: center;
+    position: relative;
+	    cursor: pointer;
+}
+.bottom .post-btn-v3 i{
+   display: block;
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    background-size: 100%;
+    margin: 0 auto;
+    margin-top: 9px;
+}
+.shouye{
+
+
+background-image: url(../addons/han_article/images/zhuanfa.png);
+
+}
+.xiaoxi{
+background-image: url(../addons/han_article/images/xiaoxi.png);
+}
+.shoucang{
+background-image: url(../addons/han_article/images/shoucang.png);
+}
+.wode{
+background-image: url(../addons/han_article/images/wode.png);
+}
+.weui_media_bd p{
+    color: #999999;
+    font-size: 13px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.down{
+position:absolute;
+	right: 27px;
+	top: 4px;
+	    z-index: 999;
+}
+.down i{
+
+    display: block;
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    background-size: 100%;
+    margin: 0 auto;
+    margin-top: 9px;
+	background-image: url(../addons/han_article/images/xiangshang11.png);
+}
+.fan {
+    float: left;
+    display: block;
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    background-size: 100%;
+    margin: 0 auto;
+    margin-top: 11px;
+    background-image: url(../addons/han_article/images/fanhui.png);
+    margin-left: 9px;
+}
+.Header{
+
+	background: #0099ff;
+
+    color: #fff;
+
+    height: 40px;
+
+	z-index: 666;
+    line-height: 40px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+	width:100%;
+    opacity:0.8;
+
+    position: fixed;
+
+    top: 0px;
+}
+.Header p,.topnav p{
+padding-right: 18px;
+}
+.weui_navbar_item a{
+height:100%;
+}
+.weui_navbar_item.weui_bar_item_on{
+background-color: #fff;
+}
+.weui_bar_item_on a{
+    background-color: #fff;
+	color:#04be02;
+	border-bottom:2px solid##04be02;
+}
+.weui_bar_item_on a:after{
+content: '';
+    display: block;
+    height: 2px;
+    background-color: #04be02;
+}
+</style>
+<style type="text/css">
+	/******style1********/
+
+
+.w30 {
+    width: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<!---<div id="" class="Header">
+<span class="fan"onclick="javascript:history.back(-1);" ></span>
+	<p>{$config['name']}</p>
+
+</div>-->
+<div class="bd" style="height: 48px">
+    <div class="weui_tab">
+        <div class="weui_navbar">
+        	{loop $result $key $nav}
+
+                    <?php
+
+                      $rgrpid = unserialize($nav['rgrpid']);
+
+
+                    ?>
+
+                    {loop $rgrpid $k $v}
+
+ {if $v==$groupid}
+
+
+            <div class="weui_navbar_item {if $nav['id']==$cid}weui_bar_item_on{/if}" onclick="">
+                <a href="{php echo $this->createMobileUrl('index',array('cid' => $nav['id']))}" class="tab_best {if $nav['id']==$cid}tab_best11{/if}">{$nav['name']}</a>
+            </div>
+{/if}
+
+
+                    {/loop}
+
+                    {/loop}
+
+        </div>
+		<div id="" class="down">
+						<i></i>
+					</div>
+
+</div>
+</div>
+<style type="text/css">
+
+	/***********搜索**********************/
+
+form {
+
+  position: relative;
+
+  width: 100%;
+
+  margin: 0 auto;
+
+    padding: 0 10px;
+}
+
+.d1 {background: #efeff4;padding: 0px; }
+
+.d1 input {
+
+  width: 100%;
+
+  height: 42px;
+
+   padding-left: 10px;
+
+    border: 1px solid rgba(185, 185, 185, 0.1);
+
+    border-radius: 3px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: #9E9C9C;
+
+    font-size: 16px;
+
+}
+
+.d1 button {
+
+    position: absolute;
+
+    top: 2px;
+
+    right: 6px;
+
+    width: 71px;
+
+    height: 34px;
+
+    border: none;
+
+    background: #04be02;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.d1 button:before {
+
+  background-image: url(../addons/han_article/images/sousuo111.png);
+
+    display: inline-block;
+
+    content: "";
+
+    position: relative;
+
+    top: -1px;
+
+    width: 18px;
+
+    height: 18px;
+
+    background-repeat: no-repeat;
+
+    background-size: 18px 18px;
+
+    vertical-align: middle;
+
+    margin-right: 2px;
+
+}
+.ntime{
+    margin-top: 6px;
+    color: #bbbaba;
+    font-size: 13px;
+}
+embed{
+    margin-top: 21px;
+}
+.feed-two-line label{
+    line-height: 21px;
+}
+</style>
+
+<!-------搜索-------->
+
+<div style="width:100%; text-align:center;  height:45px;   " class="d1" >
+
+        <form action="./index.php" method="get" class="form-horizontal" role="form">
+
+            <input type="hidden" name="i" value="{$_W['uniacid']}"/>
+
+            <input type="hidden" name="c" value="entry"/>
+
+            <input type="hidden" name="m" value="han_article"/>
+
+            <input type="hidden" name="do" value="index"/>
+
+            <input type="hidden" name="cid" value="{$_GPC['cid']}"/>
+
+            <input  name="keyword" style=" float:none; height:34px; line-height:34px; margin-top:5px; border-radius:6px" id="" type="text" value=""placeholder="搜索从这里开始...">
+          <button class="btn btn-default" style="float:right; margin-top:3px;  margin-left:1%;margin-right:1%;width:14%; border-radius:6px"></button>
+
+        </form>
+
+    </div>
+<!--轮播-->
+<div id="carousel-container" class="carousel slide" data-ride="carousel">
+
+	<div class="carousel-inner" role="listbox">
+ {loop $pic $key $pi}
+
+		<div class="item{if $key == 0} active{/if}">
+			<a href="#">
+
+
+
+				<img src="{php echo tomedia($pi);}" title="{$row['description']}" style="width:100%; vertical-align:middle;">
+
+			</a>
+			<div class="carousel-caption">
+
+
+			</div>
+		</div>
+{/loop}
+	</div>
+	<!-------<div class="carousel-indicators indicator">
+
+{loop $pic $key2 $pi}
+		<a href="javascript:;" {if $key2==0}class="active"{/if}><i class="icon_dot"></i></a>
+{/loop}
+	</div>------>
+
+</div>
+<script>
+	require(['bootstrap', 'hammer'], function($, Hammer){
+		$('#carousel-container').carousel();
+		var mc = new Hammer($('#carousel-container').get(0));
+		mc.on("panleft", function(ev) {
+			$('#carousel-container').carousel('next');
+		});
+		mc.on("panright", function(ev) {
+			$('#carousel-container').carousel('prev');
+		});
+	});
+</script>
+<!--end轮播-->
+<!--navbar-->
+<style type="text/css">
+	.weui_navbar{
+		padding: 0;
+	}
+	.weui_navbar a{
+	    width: 100%;
+	    display: block;
+	    height: 100%;
+	}
+	.weui_bar_item_on a{
+		color: green;
+	}
+	/*.weui_media_hd{
+    margin-right: .8em;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}*/
+.weui_media_hd{
+
+}
+.weui_media_desc{
+    height:30px;
+    color: #999999;
+}
+.weui_media_desc p{
+
+    color: #999999!important;
+	margin-bottom:23px;
+}
+.weui_navbar{
+display:block;
+width: 100%;
+height: 48px;
+overflow: hidden;
+}
+.weui_navbar_item{
+    width: 23%;
+    float: left;
+
+}
+.weui_navbar_item a{
+border-right:1px solid #ddd;
+
+	height:100%;
+	}
+.navtoggle{
+z-index:99!important;
+position:absolute!important;
+background:#fff!important;
+border:1px solid#eee!important;
+height:auto!important ;
+}
+.weui_navbar:nth-child(4){
+width:30%;
+}
+.weui_navbar_item:after{
+border-right:0;
+}
+.weui_media_appmsg{
+border-bottom:1px solid #eee;
+/*box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.3);*/
+}
+#wt{
+background-image:url(../addons/han_article/images/wutu1.png);
+    background-size: 100%;
+}
+</style>
+
+<div class="bd" style="height: 100%;">
+    <div class="weui_tab">
+        <div class="weui_navbar">
+        	{loop $result $key $nav}
+
+                    <?php
+
+                      $rgrpid = unserialize($nav['rgrpid']);
+
+
+                    ?>
+
+                    {loop $rgrpid $k $v}
+
+ {if $v==$groupid}
+
+            <div class="weui_navbar_item {if $nav['id']==$cid}weui_bar_item_on{/if}" onclick="">
+                <a href="{php echo $this->createMobileUrl('index',array('cid' => $nav['id']))}" class="tab_best {if $nav['id']==$cid}tab_best11{/if}">{$nav['name']}</a>
+            </div>
+
+{/if}
+
+                    {/loop}
+
+                    {/loop}
+
+        </div>
+		<div id="" class="down">
+						<i></i>
+					</div>
+
+</div>
+</div>
+<!-------文章列表------>
+        <div class="weui_tab_bd"style="margin-top:50px;">
+				<div class="weui_panel weui_panel_access">
+
+	        <div class="weui_panel_bd"id="stage">
+
+	        	{loop $list $k $item}
+			            <a href="{if empty($item['outLink'])}{php echo $this->createMobileUrl("detail",array("id" => $item['id']),true)}{else}{$item['outLink']}{/if}" class="weui_media_box weui_media_appmsg">
+						<div id="wt"style="width: 60px;height: 60px;margin-right: .8em;">
+						<div style="display:none;" id="ne"></div>
+						<?php
+                         $pics = unserialize($item['pics']);
+
+                         ?>
+			                <div class="weui_media_hd">
+
+							{php $i=0;}
+
+					   {loop $pics $pic}
+
+                       {php $i++ ;}
+
+                       {if $i<2}
+			                    <img class="weui_media_appmsg_thumb" src="{php echo strpos($pic,'http://')===FALSE?($_W['attachurl'].$pic):$pic}" alt="">
+
+							{/if}
+
+					  {/loop}
+					  </div>
+					   </div>
+
+
+			                <div class="weui_media_bd">
+			                    <h4 class="weui_media_title">{php echo cutstr($item['title'],15,ture);}</h4>
+			                    <div class="weui_media_desc">{php echo cutstr($item['content']);}</div>
+			                </div>
+			            </a>
+
+	            {/loop}
+	        </div>
+
+        </div>
+
+    </div>
+<!-------帖子
+
+ <div id="top_div" class="animated fadeInDown" style="z-index:299;position:fixed; bottom:30px;right:30px;">
+
+    <a href="{php echo $this->createMobileUrl('publish');}">
+
+	  <img src="../addons/han_article/images/tiezi.png" width="80px" height="80px">
+
+	</a>
+
+ </div>------>
+<!--底部导航-->
+
+
+
+<div id="" class="bottom" >
+
+					<div class="post-btn-v3">
+
+					   <i class="shouye"></i>
+
+							<a href="{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=index&m=han_article">首页
+
+                        </a>
+
+					  </div>
+
+					  <div class="qdao post-btn-v3">
+
+						  <i class="sousuo"></i>
+
+						  <a href="#" onclick="mon_sign({$sign['id']});">签到</a>
+
+
+					  </div>
+
+					  <div class="post-btn-v3">
+
+					  <i class="xiaoxi"></i>
+
+					 <a href="{php echo $this->createMobileUrl('home',array('op' => 'messagelist','uid'=>$member['uid']));}">消息</a>
+
+					  </div>
+
+
+
+
+
+					  <div class="post-btn-v3">
+
+					  <i class="wode"></i>
+
+							<a href="{php echo $this->createMobileUrl('home');}">我的
+
+
+
+                        </a>
+
+					  </div>
+
+
+
+
+
+</div>
+<script type="text/javascript">
+	//
+	$(".down").click(function(){
+	  $('.weui_navbar').toggleClass('navtoggle');
+
+
+	});
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+ //这里就要进行计算滚动条当前所在的位置了。如果滚动条离最底部还有100px的时候就要进行调用ajax加载数据
+
+ $(window).scroll(function(){
+
+     //此方法是在滚动条滚动时发生的函数
+
+     // 当滚动到最底部以上100像素时，加载新内容
+
+     var $doc_height,$s_top,$now_height;
+
+     $doc_height = $(document).height();        //这里是document的整个高度
+
+
+
+     $s_top = $(this).scrollTop();            //当前滚动条离最顶上多少高度
+
+     $now_height = $(this).height();            //这里的this 也是就是window对象
+
+     if(($doc_height - $s_top - $now_height) < 100) jsonajax({$cid});
+
+ });
+
+
+
+
+
+ //做一个ajax方法来请求data.php不断的获取数据
+
+ var num = 0;
+
+ function jsonajax(cid){
+
+   $.ajax({
+
+     url:"{php echo $this->createMobileUrl('ArtList')}",
+
+     type:'POST',
+
+     data:{num:++num,cid:cid},
+
+     dataType:'json',
+
+     success:function(json){
+
+       if(typeof json == 'object'){
+
+         var it;
+
+         for(var i=0,l=json.length;i<l;i++){
+
+           it = json[i];    //当前层数据
+
+                     //找了高度最少的列做添加新内容
+			var its=$('<a href="'+it.dlink+'" class="weui_media_box weui_media_appmsg"><div id="wt" style="width: 60px;height: 60px;margin-right: .8em;">'+it.imgdiv1+'</div><div class="weui_media_bd"><h4 class="weui_media_title">'+it.title+'</h4><div class="weui_media_desc">'+it.content+'</div></div></a>').hide();
+
+
+           $("#stage").append(its);
+
+           its.fadeIn(500);
+
+         }
+
+       }
+
+     }
+
+  });
+
+
+
+  $('.weui_media_box').each(function(){
+
+	$(this).html(
+
+	  $(this).html().replace(/\[em_([0-9]*)\]/g,'<img src="../addons/han_article/example/arclist/$1.gif" border="0" />')
+
+	)
+
+});
+
+/*$('#ne').each(function(){
+		if($(this).next().length == 0){
+		  $(this).parent('#wt').css('background-image','url(../addons/han_article/images/wutu1.png)').css('background-size','100%');
+console.log(33333333);
+		};
+
+	 });*/
+
+
+ }
+
+
+</script>
+
+
+<!--end_navbar-->
+{template 'footer'}
+
+

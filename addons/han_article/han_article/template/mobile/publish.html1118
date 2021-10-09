@@ -1,0 +1,266 @@
+{template 'common/header'}
+
+<style>
+
+	body{background:#d2e6e9; padding-bottom:63px;}
+
+	.panel{margin-bottom:0px; border:none;}
+
+	.panel.panel-default{color:#606366;}
+
+	.panel>.list-group:last-child .list-group-item:last-child{border-bottom:1px solid #dddddd;}
+
+	.panel.panel-default ul{background:-webkit-gradient(linear,0 0, 0 10%,from(rgba(90,197,212,1)), to(rgba(90,197,212,1))) center top; border-top:10px solid #e4e9e8; -webkit-background-size:100% 2px; padding-top:2px; background-repeat:no-repeat;}
+
+	.panel.panel-default:first-child ul{background:none; border-top:0; padding-top:0;}
+
+	.panel.panel-default ul .list-group-item{background-color:#e1ecee; height:48px; overflow:hidden;}
+
+	.panel.panel-default ul .list-group-item i{font-size:20px; display:inline-block; width:25px; margin-right:10px; color:#8dd1db; text-align:center; position:relative; top:3px;}
+
+	.panel.panel-default ul .list-group-item > .pull-right i{display:inline-block; font-size:22px; color:#888; position:absolute; right:0px; top:12px;}
+
+	.panel.panel-default ul .list-group-item > .pull-right .btn{background:#56c6d6; color:#FFF; border:0; border-radius:1px; margin-top:-5px; width:100px; height:32px; font-size:17px; white-space:pre-line;}
+
+	.btn-group-top-box{padding:10px 0; border-bottom:1px solid #a5d7de;}
+
+	.btn-group-top{margin:0 auto; overflow:hidden; width:200px; display:block;text-align:center;}
+
+	.btn-group-top .btn{width:100px; -webkit-box-shadow:none; box-shadow:none; border-color:#5ac5d4; color:#5ac5d4; background:#d1e5e9;}
+
+	.btn-group-top .btn:hover{color:#FFF; background:#addbe1;}
+
+	.btn-group-top .btn.active{color:#FFF; background:#5ac5d4;}
+
+	.btn.use{background:#56c6d6; color:#FFF; border:0; border-radius:4px;}
+
+	.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {color: #5ac5d4; background-color: #eee; border-color: #a5d7de;}
+
+	.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{background-color:#5ac5d4; border-color:#5ac5d4;}
+
+	.pagination>li>a, .pagination>li>span{color:#5ac5d4; border:1px solid #a5d7de;}
+
+
+
+</style>
+
+<style>
+
+	body{background:#FFF;}
+
+	.panel{margin:.5em; border:none;}
+
+	.panel-info>.panel-heading {background: -webkit-gradient(linear, 0 0, 100% 0, from(#ebebeb), to(#f3f9fa), color-stop(30%, #f5f9f9)); color:#666666; border:none;}
+
+	a{color:#666666;}a:hover{color: #3ebacc;}
+
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{color: #3ebacc;}
+
+	.actions{margin:.8em auto;}
+
+	.nav.nav-tabs{margin-bottom:.8em;}
+
+	.btn.btn-primary{background: #0C0; color: #FFF; border: 0;}
+
+
+
+	.download{background: #FFF;width:80px;height:80px;margin-left:10px;float:left;border:1px solid #CCC;text-align:center; color:#CCC;vertical-align:middle; line-height:100px;}
+
+</style>
+<form  action="{php echo $this->createMobileUrl('Publish')}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" value="{$detail['id']}"/>
+
+<div id="form" class="panel panel-info" style="height:100%;background:#FFF;background-size:100%;display:;">
+
+	<div  class="panel-heading" style="text-align:center;">
+
+		<h4>发帖</h4>
+
+	</div>
+
+	<div class="panel-body" style="text-align:center;filter: alpha(opacity=90); opacity: 0.9;">
+
+			<div class="tab-content">
+
+				<div class="tab-pane fade in active" id="email">
+
+                  <div class="form-group">
+
+                    <div class="col-sm-8">
+
+                        <input type="text" class="form-control" placeholder="标题" name="title" value="{$detail['title']}">
+
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-8">
+
+                        {php echo tpl_form_field_category('category', $parent, $children, $pcate, $ccate)}
+
+                    </div>
+
+                  </div>
+
+                 
+                 <div class="form-group">
+
+                    <div class="col-sm-8">
+
+                        <input id="address" type="text" class="form-control" placeholder="" name="address" value="{$detail['address']}" readOnly="true">
+
+                    </div>
+
+                  </div>
+                  
+                   <div class="form-group">
+                   <div class="col-sm-8">
+
+                    {php echo tpl_artical_form_field_image('thumb',$detail['pics'],$_W['attachurl'])}
+
+                   </div>
+                 </div>
+
+                  <div id="detail" class="form-group">
+
+                    <textarea name="content" rows="8" class="form-control" placeholder="帖子内容" >{$detail['content']}</textarea>
+
+				  </div>
+
+				</div>
+
+			</div>
+
+			<div class="form-group" >
+
+
+				<input id="submit1" type="submit" name="submit" class="btn btn-primary" value="直接发表" style="float:left">
+
+
+
+
+				<input id="submit2" type="button"  class="btn btn-primary" value="进入高级模式" style="float:right">
+
+
+				<input type="hidden" name="token" value="{$_W['token']}">
+
+			</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+<div id="gjms" class="panel panel-info" style="display:none;height:100%;background:#FFF;background-size:100%;">
+
+	<div  class="panel-heading" style="text-align:center;">
+
+		<h4>高级模式</h4>
+
+	</div>
+
+	<div class="panel-body" style="text-align:center;filter: alpha(opacity=90); opacity: 0.9;">
+
+	  <div class="tab-content">
+
+	    <div class="tab-pane fade in active" id="email">
+
+          <div id="xs" class="form-group">
+
+            <span style="float:left;font-family:inherit;color:#000">启用悬赏</span>
+
+            <input type="radio" name="open_xs" value="1" {if $detail['open_xs']==1}checked{/if}/>是&nbsp;&nbsp;&nbsp;&nbsp;
+
+		    <input type="radio" name="open_xs" value="0" {if $detail['open_xs']==0}checked{/if}/>否
+
+          </div>
+
+          <div class="form-group">
+
+             <div class="col-sm-8 col-xs-12">
+
+             <input type="text" class="form-control" id="xsNum" name="xsNum" placeholder="悬赏金额" value="{$detail['xsNum']}">
+
+             </div>
+
+          </div>
+
+          <div id="yc" class="form-group">
+
+             <span style="float:left;font-family:inherit;color:#000">启用隐藏可见</span>&nbsp;
+
+             <input type="radio" name="open_yc" value="0" {if $detail['open_yc']==0}checked{/if}/>不启用&nbsp;&nbsp;&nbsp;
+
+             <input type="radio" name="open_yc" value="1" {if $detail['open_yc']==1}checked{/if}/>购买可见&nbsp;&nbsp;&nbsp;
+
+		     <input type="radio" name="open_yc" value="2" {if $detail['open_yc']==2}checked{/if}/>回帖可见
+
+          </div>
+
+          <div class="form-group">
+
+            <div class="col-sm-8">
+
+              <textarea name="content_j" rows="8" class="form-control" placeholder="隐藏内容" >{$detail['content_j']}</textarea>
+
+            </div>
+
+          </div>
+
+          <div class="form-group">
+
+             <div class="col-sm-8 col-xs-12">
+
+               <input type="text" class="form-control" id="gmjf" name="gmjf" placeholder="隐藏内容价格" value="{$detail['gmjf']}">
+
+             </div>
+
+          </div>
+
+          <div class="form-group" >
+
+			  <input id="submit3" type="submit" name="submit" class="btn btn-primary" value="发表" >
+
+			  <input type="hidden" name="token" value="{$_W['token']}">
+
+		  </div>
+
+       </div>
+
+     </div>
+   </div>
+ </div>
+
+</div>
+</form>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5PESLgvMcSbSUbPjmDKgvGZ3"></script>
+<script>
+
+  $('#submit2').click(function(){
+
+	  document.getElementById('form').style.display="none";
+
+	  document.getElementById('gjms').style.display="block";
+
+  });
+
+  $(document).ready(function(){
+
+	var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r) {
+	var address = r.address;
+	document.getElementById('address').value= address['province']+address['city'];
+	}, {
+    enableHighAccuracy: true
+   });
+  });
+</script>
+
+</body>
+
+</html>
+
+
+

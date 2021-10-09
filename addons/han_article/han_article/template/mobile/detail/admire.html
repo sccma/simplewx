@@ -1,0 +1,97 @@
+{template 'common/header'}
+<link rel="stylesheet" type="text/css" href="../addons/han_article/css/style12.css">
+<div class="fr_ds_main">
+    <div class="fr_ds_admire_top">
+        <div class="fr_ds_cover">
+            <img src="{$detail['avatar']}" onerror="this.src='{__IMG__}/100.gif'" />
+
+        </div>
+    </div>
+    <div class="fr_ds_name">{$_W['account']['name']}</div>
+    {if $detail['title']}
+    <p class="fr_ds_subtitle">{$detail['title']}</p>
+    {/if}
+    <ul class="fr_ds_money_list clearfix">
+        <li><a href="javascript:;" class="fr_ds_pay" data-money="1"><i>1</i><span></span></a></li>
+        <li><a href="javascript:;" class="fr_ds_pay" data-money="2"><i>2</i><span></span></a></li>
+        <li><a href="javascript:;" class="fr_ds_pay" data-money="5"><i>5</i><span></span></a></li>
+        <li><a href="javascript:;" class="fr_ds_pay" data-money="10"><i>10</i><span></span></a></li>
+        <li><a href="javascript:;" class="fr_ds_pay" data-money="20"><i>20</i><span></span></a></li>
+        <li><a href="javascript:;" class="fr_ds_pay" data-money="50"><i>50</i><span></span></a></li>
+
+    </ul>
+    <p class="fr_ds_other_money"><a href="javascript:;" onclick="document.getElementById('fr_ds_dialog').style.display='block';" id="fr_ds_other_pay">其他金额</a></p>
+</div>
+<div class="fr_ds_mask"></div>
+<div class="fr_ds_dialog" id="fr_ds_dialog">
+    <div class="fr_ds_dialog_title">
+        <h4>其他金额</h4>
+        <span class="fr_ds_dialog_close fr_close hairline"></span>
+    </div>
+    <div class="fr_ds_dialog_content">
+        <div class="fr_ds_input_box clearfix">
+            <label for="otherMoney">金额()</label>
+            <input type="tel" min="1" max="100" id="otherMoney" placeholder="可填写1-100" />
+            <span id="quickdelete">
+                <span class="fr_close white"></span>
+            </span>
+        </div>
+        <button type="button" disabled id="fr_ds_btn">打赏</button>
+    </div>
+</div>
+<script>
+$(function(){
+
+	 $(".fr_ds_pay").on('click', function() {
+        var fee = $(this).data('money');
+        $.post("{php echo $this->createMobileUrl('gods');}",{dsNum:fee,op:'ds',id:{$detail['id']}},function(data){
+
+	     alert(data.msg);
+		 $("#otherMoney").val('');
+         $("#fr_ds_btn").prop('disabled', true);
+         $(".fr_ds_dialog, .fr_ds_mask").hide();
+
+		 location.href="{php echo $this->createMobileUrl('detail',array('id'=>$detail['id']))}";
+
+	 },"json");
+    });
+
+    $("#fr_ds_other_pay").on('click', function() {
+        $(".fr_ds_dialog, .fr_ds_mask").show();
+        var fr_ds_dialog_width = $(".fr_ds_dialog").width();
+        $(".fr_ds_dialog").css({'margin-left': '-' + (fr_ds_dialog_width / 2) + 'px'});
+        $("#otherMoney").focus();
+    });
+    $(".fr_ds_dialog_close").on('click', function(){
+        $("#otherMoney").val('');
+        $("#fr_ds_btn").prop('disabled', true);
+        $(".fr_ds_dialog, .fr_ds_mask").hide();
+    });
+
+    $("#otherMoney").keyup(function(){
+        var money = Number($(this).val());
+        if (money >= Number($(this).attr("min")) && money <= Number($(this).attr("max"))) {
+            $(this).val(money);
+            $("#fr_ds_btn").prop('disabled', false);
+        }else{
+            $("#fr_ds_btn").prop('disabled', true);
+        }
+    });
+    $("#fr_ds_btn").on('click', function(){
+        var fee = $("#otherMoney").val();
+        $.post("{php echo $this->createMobileUrl('gods');}",{dsNum:fee,op:'ds',id:{$detail['id']}},function(data){
+
+	     alert(data.msg);
+		 $("#otherMoney").val('');
+         $("#fr_ds_btn").prop('disabled', true);
+         $(".fr_ds_dialog, .fr_ds_mask").hide();
+
+		 location.href="{php echo $this->createMobileUrl('detail',array('id'=>$detail['id']))}";
+
+	 },"json");
+    });
+
+})
+
+</script>
+{template 'footer'}

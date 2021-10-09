@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>{if !empty($title)} {$title} {elseif !empty($_W['page']['title'])} {$_W['page']['title']}{/if}{if !empty($_W['page']['sitename'])} - {$_W['page']['sitename']}{else} - {$_W['account']['name']}{/if}{if IMS_FAMILY != 'x'} - Powered by WE7.CC{/if}</title>
+
+	<meta name="format-detection" content="telephone=no, address=no">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+	<meta name="apple-touch-fullscreen" content="yes"/>
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="keywords" content="{if empty($_W['page']['keywords'])}{if IMS_FAMILY != 'x'}微擎,微信,微信公众平台,we7.cc{/if}{else}{$_W['page']['keywords']}{/if}" />
+
+	<meta name="description" content="{if empty($_W['page']['description'])}{if IMS_FAMILY != 'x'}公众平台自助引擎（www.we7.cc），简称微擎，微擎是一款免费开源的微信公众平台管理系统，是国内最完善移动网站及移动互联网技术解决方案。{/if}{else}{$_W['page']['description']}{/if}" />
+
+	<link rel="shortcut icon" href="{$_W['siteroot']}{$_W['config']['upload']['attachdir']}/{if !empty($_W['setting']['copyright']['icon'])}{$_W['setting']['copyright']['icon']}{else}images/global/wechat.jpg{/if}" />
+
+        <link href="{$_W['siteroot']}/addons/han_article/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="js_article" class="rich_media">
+
+  <div class="rich_media_inner">
+
+    <div id="page-content">
+
+      <div class="container container-fill"style="margin-top:0px;">
+
+ <style type="text/css">
+
+	.pg {
+
+    height: 38px;
+
+    color: #000;
+
+    line-height: 38px;
+
+    border: 1px solid #dadbdf;
+
+    background-color: #fff;
+
+	margin-left:6px;
+
+ }
+
+ .pg li.pg_empty {
+
+    opacity: .5;
+
+    filter: alpha(opacity=50);
+
+    color: #000;
+
+    cursor: default;
+
+ }
+
+ .pg li {
+
+    position: relative;
+
+    float: left;
+
+    width: 50%;
+
+    font-size: 14px;
+
+    text-align: center;
+
+	border-right: 1px solid #e9e9e9;
+
+ }
+
+ .pg li:last-child{
+
+   border:none;
+
+ }
+
+ .pg li a:hover {
+
+    color: #2786e4;
+
+    cursor: pointer;
+
+	background:#eee;
+
+ }
+
+ .pg li.pg_menu:before {
+
+    content: ' ';
+
+    position: absolute;
+
+    right: 0;
+
+    top: 4px;
+
+    bottom: 4px;
+
+    width: 1px;
+
+    background-color: #e9e9e9;
+
+ }
+
+.feed-two-line label {
+
+    display: inline-block;
+
+    border-radius: 2px;
+
+   min-width: 18px;
+
+    height: 18px;
+
+    font-size: 15px;
+
+    line-height: 18px;
+
+    text-align: center;
+
+    color: #fff;
+
+	    font-weight: 200;
+
+}
+
+
+
+.feed-two-line label.blue {
+
+    background-color: #f1bf00;
+
+	}
+.down{
+position:absolute;
+	right: 12px;
+	top: 4px;
+}
+.down i{
+
+    display: block;
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    background-size: 100%;
+    margin: 0 auto;
+    margin-top: 9px;
+	background-image: url(../addons/han_article/images/xiangshang11.png);
+}
+.NavBar .ui-test-nav{
+position:relative;
+}
+.NavBar .new-tab-list div.list12{
+width:25%;
+float:left;
+}
+.NavBar .new-tab-list div.list12 a{
+border-radius:0;
+height: 40px;
+}
+.NavBar .new-tab-list {
+   display: block;
+       width: 95%;
+    margin: 0;
+   }
+   .NavBar .new-tab-list div.list12 a:hover{
+   color:#e4393c!important;
+ border-bottom:2px solid #e4393c;
+   }
+ .tab_best11{
+ color:#e4393c!important;
+ border-bottom:2px solid #e4393c;
+ }
+ .fan {
+    float: left;
+    display: block;
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    background-size: 100%;
+    margin: 0 auto;
+    margin-top: 11px;
+    background-image: url(../addons/han_article/images/fanhui.png);
+    margin-left: 9px;
+}
+.lan{
+color:#099eb7;
+}
+/********************/
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.feed-img{
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+    float: left;
+	text-align:center;
+	margin:0 auto;
+	}
+ .feed-img img{
+   vertical-align:middle;
+   }
+   .feed-img span{
+    height:100%;
+	width:0;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align:middle;
+   }
+ </style>
+
+<div id="" class="Header">
+<span class="fan"onclick="javascript:history.back(-1);" ></span>
+	<p>{$config['name']}</p>
+
+</div>
+
+ <div id="" class="NavBar"style=" width:100%;">
+
+	<div id="" class="ui-test-nav nohighlight">
+
+		<div id="" class="new-tab-list"style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);"style=" width:90%;">
+
+		{loop $result $key $nav}
+
+                    <?php
+
+                      $rgrpid = unserialize($nav['rgrpid']);
+
+
+                    ?>
+
+                    {loop $rgrpid $k $v}
+
+
+ {if $v==$groupid}
+
+			<div id="" class="list12">
+
+				<a href="{php echo $this->createMobileUrl('index',array('cid' => $nav['id']))}" class="tab_best {if $nav['id']==$cid}tab_best11{/if}"style="30px">
+
+				  {$nav['name']}
+
+				</a>
+
+			</div>
+{/if}
+
+
+                    {/loop}
+
+                    {/loop}
+
+
+		</div>
+<div id="" class="down">
+						<i></i>
+					</div>
+
+	</div>
+
+
+ </div>
+
+<style type="text/css">
+
+	/*********************************/
+
+form {
+
+  position: relative;
+
+  width: 100%;
+
+  margin: 0 auto;
+
+}
+
+.d1 {background: #fff;padding: 0px; }
+
+.d1 input {
+
+  width: 100%;
+
+  height: 42px;
+
+   padding-left: 10px;
+
+    border: 1px solid #cacaca;
+
+    border-radius: 3px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: #9E9C9C;
+
+    font-size: 16px;
+
+}
+
+.d1 button {
+
+    position: absolute;
+
+    top: 2px;
+
+    right: 6px;
+
+    width: 71px;
+
+    height: 34px;
+
+    border: none;
+
+    background: #08a8e1;
+
+    border-radius: 0 3px 3px 0;
+
+    cursor: pointer;
+
+}
+
+.d1 button:before {
+
+  background-image: url(../addons/han_article/images/sousuo111.png);
+
+    display: inline-block;
+
+    content: "";
+
+    position: relative;
+
+    top: -1px;
+
+    width: 18px;
+
+    height: 18px;
+
+    background-repeat: no-repeat;
+
+    background-size: 18px 18px;
+
+    vertical-align: middle;
+
+    margin-right: 2px;
+
+}
+
+</style>
+
+<!-------搜索-------->
+
+<div style="width:100%; text-align:center;  height:44px;  " class="d1" >
+
+        <form action="./index.php" method="get" class="form-horizontal" role="form">
+
+            <input type="hidden" name="i" value="{$_W['uniacid']}"/>
+
+            <input type="hidden" name="c" value="entry"/>
+
+            <input type="hidden" name="m" value="han_article"/>
+
+            <input type="hidden" name="do" value="index"/>
+
+            <input type="hidden" name="cid" value="{$_GPC['cid']}"/>
+
+            <input  name="keyword" style="width:91%; float:none; height:30px; line-height:30px; margin-top:5px; border-radius:8px" id="" type="text" value=""placeholder="搜索从这里开始...">
+          <button class="btn btn-default" style="float:right; margin-top:3px; margin-left:1%;margin-right:1%;width:20%; border-radius:0 8px 8px 0"></button>
+
+        </form>
+
+    </div>
+
+ <!--置顶-->
+
+<style type="text/css">
+
+.Header,.topnav{
+
+	background: #0099ff;
+
+    color: #fff;
+
+    height: 40px;
+
+    line-height: 40px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+	width:100%;
+
+}
+.Header p,.topnav p{
+padding-right: 18px;
+}
+.topnav{
+
+display:none;
+
+z-index: 666;
+
+    position: fixed;
+
+    top: 0px;
+
+}
+
+</style>
+
+<style type="text/css">
+
+	.bottom{
+
+width:100%;
+
+height:45px;
+
+border:1px solid #ddd;
+
+display: -webkit-box;
+
+background:#fff;
+
+margin:0 auto;
+
+z-index:666;position:fixed; bottom:0px;
+
+}
+ .post-btn-v3 {
+
+    -webkit-box-flex: 1;
+
+    color: #3c3c3c;
+
+    font-size: 13px;
+
+    width: 0;
+
+    text-align: center;
+
+    position: relative;
+
+    cursor: pointer;
+
+}
+
+.bottom .post-btn-v3 i{
+
+   display: block;
+
+    width: 16px;
+
+    height: 16px;
+
+    vertical-align: -3px;
+
+    background-size: 100%;
+
+    margin: 0 auto;
+
+    margin-top: 9px;
+
+}
+
+.sousuo{
+
+background-image: url(../addons/han_article/images/qiandao12.png);
+
+}
+
+.xiaoxi{
+
+background-image: url(../addons/han_article/images/xiaoxi.png);
+
+}
+
+.shouye{
+
+
+background-image: url(../addons/han_article/images/zhuanfa.png);
+
+}
+
+.wode{
+
+background-image: url(../addons/han_article/images/wode.png);
+
+}
+
+.navtoggle{
+z-index:9999!important;
+position:absolute!important;
+background:#fff!important;
+border:1px solid#eee!important;
+height:auto!important ;
+}
+
+.male{
+    display: inline-block;
+    position: relative;
+    margin-left: 3px;
+    width: 20px;
+    height: 20px;
+	margin-top: 2px;
+}
+.group{
+    margin-top: 2px;
+    display: inline-block;
+    position: relative;
+	background:#77e3ff;
+	font-size:10px;
+	text-align:center;
+    border-radius:4px;
+	color:#099eb7;
+	padding:0 5px 0 5px;
+	    margin-left: 3px;
+}
+.give:after {
+    content: "";
+    height: 20px;
+    border-left: 1px solid #ddd;
+    position: absolute;
+    top: 10px;
+    right: -2px;
+}
+.post-bottom-v3 .give:before {
+background-image:url(../addons/han_article/images/shang.png);
+}
+.groupbrief{
+    height: 37px;
+}
+.groupbrief p{
+    font-size: 14px;
+    padding-top: 5px;
+    line-height: 18px;
+    padding-left: 1px;
+    margin-bottom:5px!important;
+    color: #777!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+</style>
+
+<div id="" class="topnav">
+<span class="fan"onclick="javascript:history.back(-1);" ></span>
+	<p>{$config['name']}</p>
+
+</div>
+
+ <!--内容-->
+ <div class="container" style="padding:0 0 0 0; margin-top:0px; ">
+    <div id="js_plugins">
+
+       <div class="tab js_plugin" id="namespace_1" data-pid="2">
+
+ <!--导航-->
+
+ <!--导航-->
+
+			 <!--列表-->
+
+            <div class="tab_bd" style="background:#fff;" >
+
+                <div class="article_list article_list_{$key}" id="mainmenu"style="width:100%;">
+
+                   <div class="TopList"  >
+
+					<div class="top-list-wrap"  >
+
+					{loop $zdlist $k $item}
+
+						<a href="{if empty($item['outLink'])}{php echo $this->createMobileUrl("detail",array("id" => $item['id']),true)}{else}{$item['outLink']}{/if}" class="link">
+
+						  {if $item['is_zd']}<label class="rec">顶</label>{/if}
+
+						  <span class="name">{php echo cutstr($item['title'],15,ture);}</span>
+
+						</a>
+
+						{/loop}
+
+					</div>
+
+                </div>
+
+                <ul id="stage" class="list list-unstyled">
+
+                  {loop $list $k $item}
+				 <li class="PostList" >
+
+				  <div class="detail-top">
+
+				   <div class="item-user">
+
+				    <div class="item-user-wrap">
+
+				     <div class="item-user-avator">
+
+						<a href="{php echo $this->createMobileUrl('home',array('uid' => $item['uid']));}"><img src="{php echo tomedia($item['avatar']);}" alt=""class="avator-img"></a>
+
+					 </div>
+
+					 <span class="item-user-text">
+
+					  <span class="item-user-name">{$item['author']}</span>
+					  {if  $item['gender']==1}<img src="../addons/han_article/images/nan.png" class="male">{/if}
+						{if $item['gender']==2}<img src="../addons/han_article/images/nv.png" class="male">{/if}
+						<p class="group"> {loop $groups $group}{if $group['groupid']==$item['groupid']}{php echo $group['title']}{/if}{/loop}</p>
+					  <span></span>
+
+					 </span>
+
+					 <span class="item-user-time">{php echo get_timedays($item['createtime'])}</span>
+
+                     <span class="item-user-time">板块: &nbsp;<span class="lan"> {$item['bkname']}</span></span>
+
+					 <div class="read-icon-v3">
+
+					   <i class="read-icon"></i>
+
+					   <span class="readnum">{$item['clickNum']}</span>
+					 </div>
+
+				   </div>
+
+				  </div>
+
+				 </div>
+
+			 <a href="{if empty($item['outLink'])}{php echo $this->createMobileUrl("detail",array("id" => $item['id']),true)}{else}{$item['outLink']}{/if}">
+
+				 <div class="detail-bottom">
+
+				    <div class="report-content">
+
+					  <p class="grouptitle feed-two-line">  {if $item['is_jh']}<label class="blue">精 </label>{/if}   {php echo cutstr($item['title'],15,ture);}</p>
+					  <div class="groupbrief feed-two-line">{php echo cutstr($item['content']);}</div>
+
+					</div>
+
+					<?php
+                         $pics = unserialize($item['pics']);
+                         $embed=unserialize($item['embed']);
+                         ?>
+
+					<div class="img-wrap clearfix"style="overflow: hidden;"  >
+
+					 {php $i=0;}
+
+					   {loop $pics $pic}
+
+                       {php $i++ ;}
+
+                       {if $i<4}
+
+					  <div class="feed-img img-ph"  style="width: 31%; height: 112px; margin-right: 2px;">
+
+					   <img src="{php echo strpos($pic,'http://')===FALSE?($_W['attachurl'].$pic):$pic}" alt=""style=" margin-top: 0px; width: 112px; height: auto;">
+                      <span></span>
+					  </div>
+
+                      {/if}
+
+					  {/loop}
+
+					</div>
+
+				  </div>
+
+					<div class="post-bottom-v3">
+
+                      <div class="give post-btn-v3">
+					     {$item['bzsnum']}
+					  </div>
+					  <div class="reply post-btn-v3">
+
+					     {$item['plNum']}
+
+					  </div>
+
+					  <div class="like post-btn-v3">
+
+					   {$item['zanNum']}
+
+					  </div>
+
+					  <div class="more post-btn-v3">
+
+					  </div>
+
+					</div>
+
+					</a>
+
+                   </li>
+
+                    {/loop}
+
+
+
+                </ul>
+
+                <!--<ul >
+
+				 <li >
+
+                {$pager}
+
+                </li>
+
+                </ul>-->
+
+              </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+
+ </div>
+
+
+
+ <!---->
+
+ <div id="top_div" class="animated fadeInDown" style="z-index:299;position:fixed; bottom:30px;right:30px;">
+
+    <a href="{php echo $this->createMobileUrl('publish');}">
+
+	  <img src="../addons/han_article/images/tiezi.png" width="80px" height="80px">
+
+	</a>
+
+ </div>
+<style type="text/css">
+	.word{
+	    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #e4393c;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    font-size: 8px;
+    line-height: 12px;
+    top: 5px;
+	display:none;
+	}
+</style>
+
+
+<!--底部导航-->
+
+<div id="" class="bottom" >
+
+					<div class="post-btn-v3">
+
+					   <i class="shouye"></i>
+
+							<a href="{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=index&m=han_article">首页
+
+                        </a>
+
+					  </div>
+
+					  <div class="qdao post-btn-v3">
+
+						  <i class="sousuo"></i>
+
+						  <a {if $_W['openid']==null||$_W['openid']==""}href="javascript:alert('请先扫码登录！')"{else} onclick="mon_sign();"{/if} >签到</a>
+
+
+					  </div>
+
+					  <div class="post-btn-v3">
+					  <p class="word"><span class="">1</span></p>
+
+					  <i class="xiaoxi"></i>
+
+					 <a {if $_W['openid']==null||$_W['openid']==""}onclick="javascript:alert('请先扫码登录！')"{else} href="{php echo $this->createMobileUrl('home',array('op' => 'messagelist','uid'=>$member['uid']));}"{/if}>消息</a>
+
+					  </div>
+
+
+
+
+
+					  <div class="post-btn-v3">
+
+					  <i class="wode"></i>
+
+							<a {if $_W['openid']==null||$_W['openid']==""}onclick="javascript:alert('请先扫码登录！')"{else} href="{php echo $this->createMobileUrl('home');}"{/if}>我的
+
+
+
+                        </a>
+
+					  </div>
+
+
+
+
+
+</div>
+
+
+
+
+ <!--搜索
+
+ <div style="width:100%; text-align:center; z-index:299; background-color:#000; height:44px;">
+
+
+
+        <a  href="{php echo $this->createMobileUrl('publish');}" class="btn btn-default" style="float:left; width:8%;margin-top:3px; margin-left:1%;margin-right:1%"><i class="fa fa-edit"></i></a>
+
+        <form action="./index.php" method="get" class="form-horizontal" role="form">
+
+            <input type="hidden" name="i" value="{$_W['uniacid']}"/>
+
+            <input type="hidden" name="c" value="entry"/>
+
+            <input type="hidden" name="m" value="han_article"/>
+
+            <input type="hidden" name="do" value="List"/>
+
+            <input type="hidden" name="cid" value="{$_GPC['cid']}"/>
+
+
+
+
+
+            <input  name="keyword" style="width:80%; float:left; height:35px; line-height:35px; margin-top:3px;" id="" type="text" value="">
+
+
+
+            <button class="btn btn-default" style="float:right; width:8%;margin-top:3px; margin-left:1%;margin-right:1%"><i class="fa fa-search"></i></button>
+
+
+
+        </form>
+
+    </div>-->
+
+ </div>
+
+ <div>
+
+
+
+</div>
+
+
+
+
+
+<!------------->
+
+
+
+
+
+				 <div id="js_pc_qr_code" class="qr_code_pc_outer" style="display:none;">
+
+								<div class="qr_code_pc_inner">
+
+									<div class="qr_code_pc">
+
+										<img src="{$_W['attachurl']}qrcode_{$_W['acid']}.jpg?time=1428632464" class="qr_code_pc_img">
+
+										<p>微信扫一扫<br>关注该公众号</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+
+
+               </div>
+
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+ <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+
+	<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/app/util.js"></script>
+
+	<script src="{$_W['siteroot']}app/resource/js/require.js"></script>
+
+	<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/lib/jquery-1.11.1.min.js?v=20160906"></script>
+
+	<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/lib/mui.min.js?v=20160906"></script>
+
+	<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/app/common.js?v=20160906"></script>
+
+
+	<script type="text/javascript" src="{$_W['siteroot']}/addons/han_article/css/jqthumb.min.js"></script>
+
+<script type="text/javascript">
+	//
+/*$('.img-wrap').each(function(index){
+	 $('.feed-img img').jqthumb({
+			width:112,
+			height:112
+		});
+	});*/
+</script>
+<script type="text/javascript">
+	//
+	/*$(function(){
+	$('.img-wrap').each(function(index){
+	  var count=$(this).find('.feed-img').length;
+
+	  if(count==1){
+
+	   $(this).find('.feed-img>img').css('width',"300px").css('height','120%');
+	   $(this).find('.feed-img').css('width',"300px").css('height','168px');
+	 }else if(count==2){
+
+
+
+
+	 $(this).find('.feed-img>img').css('width',"198px").css('height','100%');
+	 $(this).find('.feed-img').css('width',"45%").css('height','130px').css("background","#fff");
+	 }else if(count==3){
+	 $(this).find('.feed-img>img').css('width',"149.333px").css('height','112px').css("margin-left","-18.6667px");
+	 $(this).find('.feed-img').css('width',"30%").css('height','112px');
+	 }
+	});
+
+	});*/
+</script>
+
+
+<script type="text/javascript">
+
+	if(navigator.appName == 'Microsoft Internet Explorer'){
+
+		if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
+
+			alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+
+		}
+
+	}
+
+	window.sysinfo = {
+
+		{if !empty($_W['uniacid'])}'uniacid': '{$_W['uniacid']}',{/if}
+
+		{if !empty($_W['acid'])}'acid': '{$_W['acid']}',{/if}{if !empty($_W['openid'])}'openid': '{$_W['openid']}',{/if}
+
+		{if !empty($_W['uid'])}'uid': '{$_W['uid']}',{/if}
+
+		'siteroot': '{$_W['siteroot']}',
+
+		'siteurl': '{$_W['siteurl']}',
+
+		'attachurl': '{$_W['attachurl']}',
+
+		'attachurl_local': '{$_W['attachurl_local']}',
+
+		'attachurl_remote': '{$_W['attachurl_remote']}',
+
+		{if defined('MODULE_URL')}'MODULE_URL': '{MODULE_URL}',{/if}
+
+		'cookie' : {'pre': '{$_W['config']['cookie']['pre']}'}
+
+	};
+
+	// jssdk config 对象
+
+	jssdkconfig = {php echo json_encode($_W['account']['jssdkconfig']);} || {};
+
+	// 是否启用调试
+
+	jssdkconfig.debug = false;
+
+	jssdkconfig.jsApiList = [
+
+		'checkJsApi',
+
+		'onMenuShareTimeline',
+
+		'onMenuShareAppMessage',
+
+		'onMenuShareQQ',
+
+		'onMenuShareWeibo',
+
+		'hideMenuItems',
+
+		'showMenuItems',
+
+		'hideAllNonBaseMenuItem',
+
+		'showAllNonBaseMenuItem',
+
+		'translateVoice',
+
+		'startRecord',
+
+		'stopRecord',
+
+		'onRecordEnd',
+
+		'playVoice',
+
+		'pauseVoice',
+
+		'stopVoice',
+
+		'uploadVoice',
+
+		'downloadVoice',
+
+		'chooseImage',
+
+		'previewImage',
+
+		'uploadImage',
+
+		'downloadImage',
+
+		'getNetworkType',
+
+		'openLocation',
+
+		'getLocation',
+
+		'hideOptionMenu',
+
+		'showOptionMenu',
+
+		'closeWindow',
+
+		'scanQRCode',
+
+		'chooseWXPay',
+
+		'openProductSpecificView',
+
+		'addCard',
+
+		'chooseCard',
+
+		'openCard',
+
+		'openAddress'
+
+	];
+
+	</script>
+
+<script type="text/javascript" src="../addons/han_article/example/js/jquery.qqFace.js"></script>
+
+
+<script type="text/javascript">
+	//
+	$(".down").click(function(){
+	  $('.ui-test-nav').toggleClass('navtoggle');
+
+
+	});
+
+	function mon_sign(){
+	
+	    if("{$config['qdlink']}"==''){
+		
+		  alert('签到功能未启用！');return false;
+		
+		}
+
+		$.post("{php echo $config['qdlink'];}",function(res){
+
+            if(res.code==200){
+
+				alert(res.msg);
+
+            }else {
+
+                alert(res.msg);
+            }
+
+        },"json");
+
+
+	}
+
+</script>
+<script type="text/javascript">
+
+	//
+
+	$("#qiandao").click(function(){
+
+	  $(".btn").css("background-color","#000").css("border","1px solid #fff");
+
+	  $(".qian-icon").css("background-image","url(../addons/han_article/images/dui.png)");
+
+	  $(".qian").text("已签");
+
+
+
+	});
+
+</script>
+
+<script type="text/javascript">
+
+	//
+
+	$(document).ready(function($) {
+
+
+
+				$(window).scroll(function(event) {
+
+					/* Act on the event */
+
+					if($(this).scrollTop()<=50){
+
+						$(".topnav").css("display","none");
+
+					}
+
+					if($(this).scrollTop()>50){
+
+						$(".topnav").css("display","block");
+
+					}
+
+				});
+
+		});
+
+
+
+</script>
+
+<script type="text/javascript">
+
+	//
+
+	$("input").focus(function(){
+
+	 $('.bottom').hide();
+
+	});
+
+	$("input").blur(function(){
+
+	 $('.bottom').show();
+
+	});
+
+</script>
+
+<script type="text/javascript">
+
+$(function(){
+
+//jsonajax({$cid});
+
+
+
+$('.groupbrief,.feed-two-line').each(function(){
+
+	$(this).html(
+
+	  $(this).html().replace(/\[em_([0-9]*)\]/g,'<img src="../addons/han_article/example/arclist/$1.gif" border="0" />')
+
+	)
+
+});
+
+
+
+});
+
+/*window.location.href="";*/
+
+</script>
+
+<script>
+
+$("#fb").click(function(){
+
+if( confirm("确认要发帖吗?")){
+
+$.post("{php echo $this->createMobileUrl('publish');}",{},function(data){},'json');
+
+}
+
+});
+
+
+
+$(document).ready(function(){
+
+  cutStr(document.getElementById("description"));
+
+
+
+});
+
+
+
+function cutStr(obj){
+
+  var text = obj.innerHTML;
+
+   var title = text.replace(/<[^>]+>/g,"");//去掉所有的html标记
+
+  var newText = title.substring(0,100);
+
+  var n = obj.innerHTML.length;
+
+  if(n>100){
+
+   obj.innerHTML = newText + "......";
+
+  }
+
+}
+
+
+
+</script>
+
+<!--<script>window.moon_map = {"homepage/index.js":"/mmbizwap/zh_CN/htmledition/js/homepage/index243273.js"};</script>-->
+
+<script>
+
+    var cgiData = {
+
+        biz: 'MjM5ODIyMTE0MA==',
+
+        hid: '4',
+
+        comboList: {
+
+            'js': '/hp/hp_1_6.js,/hp/hp_2_4.js',
+
+            'css.js': '/hp/hp_1_6.css.js,/hp/hp_2_4.css.js'
+
+        },
+
+        biz_info: {
+
+            nickname: "{$account['name']}"
+
+        }
+
+    };
+
+</script>
+
+<script>
+
+    var soonBaseURL = location.protocol + '//' + window.location.host,
+
+            soonMap = {
+
+                'js': [],
+
+                'css.js': []
+
+            };
+
+
+
+    for (var k in cgiData.comboList) {
+
+        soonMap[k] = cgiData.comboList[k].split(',');
+
+    }
+
+
+
+    benchmark.mark('soonJsBegin');
+
+</script>
+
+
+
+<script type="text/javascript" src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/homepage/soon243273.js"></script>
+
+<script>
+
+    seajs.use('homepage/index.js');
+
+    benchmark.mark('pageEnd');
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+var windowTop=0;//初始话可视区域距离页面顶端的距离
+
+$(window).scroll(function() {
+
+var scrolls = $(this).scrollTop();//获取当前可视区域距离页面顶端的距离
+
+if(scrolls>=windowTop){//当B>A时，表示页面在向下滑动
+
+//需要执行的操作
+
+$('#top_div').css('display','none');
+
+windowTop=scrolls;
+
+}else{//当B
+
+//需要执行的操作
+
+windowTop=scrolls;
+
+$('#top_div').css('display','inline');
+
+$('#top_div').addClass('fadeInUp') .removeClass('fadeInDown');
+
+}
+
+});
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+ //这里就要进行计算滚动条当前所在的位置了。如果滚动条离最底部还有100px的时候就要进行调用ajax加载数据
+
+ $(window).scroll(function(){
+
+     //此方法是在滚动条滚动时发生的函数
+
+     // 当滚动到最底部以上100像素时，加载新内容
+
+     var $doc_height,$s_top,$now_height;
+
+     $doc_height = $(document).height();        //这里是document的整个高度
+
+
+
+     $s_top = $(this).scrollTop();            //当前滚动条离最顶上多少高度
+
+     $now_height = $(this).height();            //这里的this 也是就是window对象
+
+     if(($doc_height - $s_top - $now_height) < 100) jsonajax({$cid});
+
+ });
+
+
+
+
+
+ //做一个ajax方法来请求data.php不断的获取数据
+
+ var num = 0;
+
+ function jsonajax(cid){
+
+   $.ajax({
+
+     url:"{php echo $this->createMobileUrl('ArtList')}",
+
+     type:'POST',
+
+     data:{num:++num,cid:cid},
+
+     dataType:'json',
+
+     success:function(json){
+
+       if(typeof json == 'object'){
+
+         var it;
+
+         for(var i=0,l=json.length;i<l;i++){
+
+           it = json[i];    //当前层数据
+
+                     //找了高度最少的列做添加新内容
+            var its=$('<li class="PostList"><div class="detail-top"><div class="item-user"><div class="item-user-wrap"><div class="item-user-avator"><a href=""><img src="'+it.avatar+'" alt=""class="avator-img"></a></div><span class="item-user-text"><span class="item-user-name">'+it.author+'</span><img src='+it.gender+' class="male"><p class="group">'+it.groupid+'</p><span></span></span><span class="item-user-time">'+it.createtime+'</span><span class="item-user-time">板块: &nbsp;<span class="lan">'+it.bkname+'</span></span><div class="read-icon-v3"><i class="read-icon"></i><span class="readnum">'+it.clickNum+'</span></div></div></div></div><a href="'+it.dlink+'"><div class="detail-bottom"><div class="report-content"><p class="grouptitle feed-two-line"> {if '+it.is_jh+'}<label class="blue">精 </label>{/if}   '+it.title+'</p><p class="groupbrief feed-two-line">'+it.content+'</p></div><div class="img-wrap clearfix"style="overflow: hidden;>'+it.imgdiv+'</div></div><div class="post-bottom-v3"><div class="give post-btn-v3">'+it.bzsnum+'</div><div class="reply post-btn-v3">'+it.plNum+'</div><div class="like post-btn-v3">'+it.zanNum+'</div><div class="more post-btn-v3"></div></div></a></li>').hide();
+
+
+          /* var its = $('<li class="PostList"><div class="detail-top"><div class="item-user"><div class="item-user-wrap"><div class="item-user-avator"><img src="'+it.avatar+'" alt="" class="avator-img"></div><span class="item-user-text"><span class="item-user-name">'+it.author+'</span><img src="'+nan.png+'" class="male"><p class="group">'+ +'</p><span></span></span><span class="item-user-time">'+it.createtime+'</span><div class="read-icon-v3"><i class="read-icon"></i><span class="readnum">'+it.clickNum+'</span></div></div></div></div><a href="'+it.dlink+'"><div class="detail-bottom"><div class="report-content"><p class="grouptitle feed-two-line">'+it.title+'</p><p class="groupbrief feed-two-line">'+it.content+'</p></div><div class="img-wrap clearfix"style="overflow: hidden;">'+it.imgdiv+'</div></div><div class="post-bottom-v3"><div class="reply post-btn-v3">'+it.plNum+'</div><div class="like post-btn-v3">'+it.zanNum+'</div><div class="more post-btn-v3"></div></div></a></li>').hide();*/
+
+           $("#stage").append(its);
+
+           its.fadeIn(500);
+
+         }
+
+       }
+
+     }
+
+  });
+
+
+
+  $('.groupbrief,.feed-two-line').each(function(){
+
+	$(this).html(
+
+	  $(this).html().replace(/\[em_([0-9]*)\]/g,'<img src="../addons/han_article/example/arclist/$1.gif" border="0" />')
+
+	)
+
+});
+
+
+
+
+ }
+
+
+</script>
+
+{template 'footer'}

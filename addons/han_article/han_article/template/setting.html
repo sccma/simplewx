@@ -1,0 +1,171 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+<li class="active"><a href="#">参数设置</a></li>
+
+</ul>
+
+<div class="main">
+    <form id="theform" class="form form-horizontal" action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                参数设置
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">名称</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="name" value="{$config['name']}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-md-2 control-label">logo</label>
+                  <div class="col-sm-9 col-xs-12">
+                   {php echo tpl_form_field_image('logo',$config['logo']);}
+                   <span>图片规格（120px*120px），请自行压缩后上传</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">简介</label>
+                    <div class="col-sm-9 col-xs-12">
+                      <textarea rows="5" name="description" class="form-control">{$config['description']}</textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">引导关注链接</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="link" value="{$config['link']}" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否开启签到</label>
+                  <div class="col-sm-9" style="padding-top:7px;">
+                    <input type="radio" name="is_qd" value="1" {if $config['is_qd']=='1'}checked{/if}/>开启&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type="radio" name="is_qd" value="0" {if $config['is_qd']=='0'}checked{/if} />关闭&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">签到应用链接</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="qdlink" value="{$config['qdlink']}" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">站长UID</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="zzuid" value="{$config['zzuid']}" class="form-control">
+                    </div>
+                </div>
+               <!-- <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-md-2 control-label">论坛模板</label>
+                  <div class="col-sm-9" style="padding-top:7px;">
+                    <input type="radio" name="is_mb" value="1" {if $config['is_mb']=='1'}checked{/if}/>简洁模板&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type="radio" name="is_mb" value="0" {if $config['is_mb']=='0'}checked{/if} />默认模板&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    </div>
+
+
+
+				  </div>
+-->
+
+              <!-----  <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-md-2 control-label">发帖高级模式</label>
+                  <div class="col-sm-9" style="padding-top:7px;">
+                    <input type="radio" name="exstyle" value="1" {if $config['exstyle']=='1'}checked{/if}/>开启&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type="radio" name="exstyle" value="0" {if $config['exstyle']=='0'}checked{/if} />关闭&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span></span>
+                  </div>
+                </div>
+--->
+                <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-md-2 control-label">打赏所用的积分类型</label>
+                  <div class="col-sm-9" style="padding-top:7px;">
+                    <input type="radio" name="ds_type" value="1" {if $config['ds_type']=='1'}checked{/if}/>金币&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type="radio" name="ds_type" value="2" {if $config['ds_type']=='2'}checked{/if} />余额&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="ds_type" value="3" {if $config['ds_type']=='3'}checked{/if} />微信支付
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-md-2 control-label">隐藏购买所用的积分类型</label>
+                  <div class="col-sm-9" style="padding-top:7px;">
+                    <input type="radio" name="yc_type" value="1" {if $config['yc_type']=='1'}checked{/if}/>金币&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type="radio" name="yc_type" value="2" {if $config['yc_type']=='2'}checked{/if} />余额&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-md-2 control-label">悬赏所用的积分类型</label>
+                  <div class="col-sm-9" style="padding-top:7px;">
+                    <input type="radio" name="xs_type" value="1" {if $config['xs_type']=='1'}checked{/if}/>金币&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type="radio" name="xs_type" value="2" {if $config['xs_type']=='2'}checked{/if} />余额&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  </div>
+                </div>
+				<!-------
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发帖时间间隔(s)</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="send_times" value="{$config['send_times']}" class="form-control">
+                    </div>
+                </div>
+				------>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">回帖时间间隔(s)</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="reply_times" value="{$config['reply_times']}" class="form-control">
+                    </div>
+                </div>
+
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">免责声明</label>
+					<div class="col-sm-8">
+				       <textarea rows="5" name="declaration" class="form-control">{$config['declaration']}</textarea>
+					</div>
+				</div>
+                <div class="form-group">
+					<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">分类显示不限制会员组</label>
+					<div class="col-md-2 col-lg-1">
+		             <input type="checkbox" name="not_limit_category" value="Y" {if $config['not_limit_category']=='Y'}checked{/if}>是&nbsp;&nbsp;
+					</div>
+                    <div class="help-block">针对首页顶部分类，开启后将忽略“分类管理”中的“可查看会员组”限制</div>
+				</div>  
+                
+                
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">借权服务号appid</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="curr_site_appid" value="{$config['curr_site_appid']}" class="form-control">
+                        <div class="help-block">当前为订阅号时推荐将公司服务号与当前订阅号在开放平台进行绑定，避免在帖子详情页回帖时出现“请先扫码登录”</div>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">借权服务号appsecret</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="curr_site_appsecret" value="{$config['curr_site_appsecret']}" class="form-control">
+                        <div class="help-block">当前为订阅号时推荐将公司服务号与当前订阅号在开放平台进行绑定，避免在帖子详情页回帖时出现“请先扫码登录”</div>
+                    </div>
+                    
+                </div>
+                                
+                                                
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-md-2 col-lg-1">
+                        <input name="submit" type="submit" value="保存" class="btn btn-primary btn-block" />
+                        <input type="hidden" name="token" value="{$_W['token']}" />
+                    </div>
+                </div>
+              
+
+            </div>
+        </div>
+    </form>
+</div>
+{template 'common/footer'}

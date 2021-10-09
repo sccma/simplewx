@@ -1,0 +1,192 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+	<li class="active"><a href="{php echo $this->createWebUrl('sensitive')}">敏感词管理</a></li>
+</ul>
+<style>
+.label{cursor:pointer;}
+</style>
+  <div class="main">
+  <div class="panel panel-info">	
+	<div class="panel-heading">批量导入/导出</div>
+		<div class="panel-body"> 
+           <form id="redSet3" class="form form-horizontal" action="{php echo $this->createWebUrl('sensitive')}" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+               <label class="col-xs-12 col-sm-3 col-md-1 control-label"></label>
+               <div class="col-md-2 col-lg-1" >
+                 <input name="submit" type="submit" value="批量导入" class="btn btn-primary btn-block" />
+               </div>
+               <div class="col-md-2 col-lg-3" >
+                 <input  type="file" name="txtfile" />
+                 <span class="help-block">上传文件类型仅限.txt,敏感词以空格或回车间隔</span>
+               </div>             
+            </div>
+            <div class="form-group">
+               <label class="col-xs-12 col-sm-3 col-md-1 control-label"></label>
+               <div class="col-md-2 col-lg-1" >
+                 <input name="submit" type="submit" value="批量导出" class="btn btn-primary btn-block" />
+               </div>
+              
+            </div>      
+           </form>
+        </div>
+   </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">敏感词列表</div>
+    <div class="panel-body" style="padding:inherit;">
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+
+				<input type="hidden" name="c" value="site" />
+
+				<input type="hidden" name="a" value="entry" />
+
+				<input type="hidden" name="m" value="han_article" />
+
+				<input type="hidden" name="do" value="sensitive" />
+                
+                <input type="hidden" name="op" value="display" />
+
+				<div class="form-group">
+
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label"></label>
+
+					<div class="col-xs-12 col-sm-8 col-lg-9">
+
+						<input class="form-control" name="keywords" id="" placeholder="“输入敏感词”搜索" type="title" value="{$_GPC['title']}">
+
+					</div>
+
+					<div class=" col-xs-12 col-sm-2 col-lg-2">
+
+						<button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+
+					</div>
+
+				</div>
+
+				<div class="form-group">
+
+				</div>
+
+			</form>
+
+		</div>
+	<div class="panel-body table-responsive">
+		<table class="table table-hover">
+			<thead class="navbar-inner">
+				<tr>
+                    <th class='with-checkbox' style='width:10%;'>
+					<input type="checkbox" class="check_all" />
+				    </th>
+					<th style="text-align:center; width:10%;">序号</th>
+					<th style="text-align:center; width:40%;">敏感词</th>
+					<th style="text-align:center; width:40%;">管理</th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $list $row}
+				<tr  style="text-align:center;">
+                   <td class="with-checkbox">
+					<input type="checkbox" name="check" value="{$row['id']}"></td>
+                    <td style="text-align:center;">{$row['id']}</td>
+                   <td style="text-align:center;">{$row['word']}</td>				
+				   
+					<td>
+                    {php $dlink=$this->createWebUrl('sensitive', array('op' => 'delete','id' => $row['id']))}
+					<a href="{$dlink}" onclick="return confirm(此操作不可恢复，确认删除？');return false;" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="删除该记录？！"><i class="fa fa-times"></i></a>
+					</td>
+				</tr>
+				{/loop}	
+                <tr>
+                  <td style="text-align:center;">
+					<input id="adbutton" type="button" class="btn btn-primary" name="add" value="新增一个" />
+				  </td>
+                  <td></td>
+                  <td ><input type="text" placeholder="敏感词" value="" name="mc" class="form-control" id="mc" style="display:none"></td>
+                  
+                  <td id="addbtn" style="text-align:center;display:none">
+                    <input type="button" class="btn btn-primary" name="addsubmit" value="确认" />
+                  </td>
+                </tr>
+                <tr>
+				<td colspan="4">
+					<input type="button" class="btn btn-primary" name="deleteall" value="删除选择的" />
+				</td>
+			    </tr>
+			</tbody>
+		</table>
+		{$pager}
+	</div>
+  </div>
+</div>
+<script>
+	require(['bootstrap'],function($){
+		$('.btn').tooltip();
+	});
+</script>
+<script>
+	$(function(){
+		$("#adbutton").click(function(){
+			$("#mc").show();
+			$("#addbtn").show();
+		});
+		
+		$("input[name=addsubmit]").click(function(){
+			var word =$("#mc").val();
+			
+			$.post("{php echo $this->createWebUrl('sensitive',array('op'=>'add'))}", {word:word},function(data){
+				location.href="{php echo $this->createWebUrl('sensitive', array('op' => 'display'))}";
+					/*if (data.errno ==0)
+					{
+						//window.location.reload();
+						location.href="{php echo $this->createWebUrl('kouling', array('op' => 'display'))}";
+					} else {
+						alert(data.error);
+					}*/
+				},'json');
+			
+		});
+
+		$(".check_all").click(function(){
+			var checked = $(this).get(0).checked;
+			$(':checkbox').each(function(){this.checked = checked});
+		});
+		$("input[name=deleteall]").click(function(){
+
+			var check = $("input:checked");
+			if(check.length<1){
+				alert('请选择要删除的记录!');
+				return false;
+			}
+			if( confirm("确认要删除选择的记录?")){
+				var id = new Array();
+				check.each(function(i){
+					id[i] = $(this).val();
+				});
+
+				$.post("{php echo $this->createWebUrl('sensitive',array('op'=>'deleteall'))}", {idArr:id},function(data){
+					location.href="{php echo $this->createWebUrl('sensitive', array('op' => 'display'))}";
+					/*if (data.errno ==0)
+					{
+						//location.reload();
+						location.href="{php echo $this->createWebUrl('kouling', array('op' => 'display'))}";
+					} else {
+						alert(data.error);
+					}*/
+				},'json');
+			}
+
+		});
+		
+	});
+</script>
+<script>
+	function drop_confirm(msg, url){
+		if(confirm(msg)){
+			window.location = url;
+		}
+	}
+</script>
+
+{template 'common/footer'}

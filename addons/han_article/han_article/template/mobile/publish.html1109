@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <title>{$_W[account]['name']}</title>
+    <link href="{$_W['siteroot']}app/resource/css/bootstrap.min.css?v=20150403" rel="stylesheet">
+    <link rel="stylesheet" href="../addons/amouse_ecard/style/css/reset.css?v=2015040501">
+    <link rel="stylesheet" href="../addons/amouse_ecard/style/css/flytip.css?v=2015040501">
+    <link rel="stylesheet" href="../addons/amouse_ecard/style/css/nameCard.css?v=201410256">
+    <script type="text/javascript" src="../addons/amouse_ecard/style/js/jquery.1.11.1.js?v=20150403"></script>
+    <script type="text/javascript" src="../addons/han_hongbao/template/mobile/js/sweetalert.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="{$_W['siteroot']}app/resource/js/app/util.js"></script>
+    <script src="{$_W['siteroot']}app/resource/js/require.js"></script>
+    <script src="{$_W['siteroot']}app/resource/js/app/config.js"></script>
+    <script type="text/javascript" src="{$_W['siteroot']}app/resource/js/lib/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/lib/mui.min.js"></script>
+<script type="text/javascript" src="{$_W['siteroot']}app/resource/js/app/common.js"></script>
+<script type="text/javascript" src="../addons/han_hongbao/template/mobile/js/jquery.js"></script>
+<script type="text/javascript" src="../addons/han_hongbao/template/mobile/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5PESLgvMcSbSUbPjmDKgvGZ3"></script>
+<link type="text/css" rel="stylesheet" href="../addons/han_hongbao/template/mobile/css/weui.css" />
+<link type="text/css" rel="stylesheet" href="../addons/han_hongbao/template/mobile/css/weui.min.css" />
+<link type="text/css" rel="stylesheet" href="../addons/han_hongbao/template/mobile/css/style.css" />
+<link type="text/css" rel="stylesheet" href="../addons/han_hongbao/template/mobile/css/sweetalert.css" />
+
+<link rel="stylesheet" href="../addons/han_hongbao/template/mobile/css/chaikai.css" />
+
+<script src="../addons/han_hongbao/template/mobile/js/jquery.js"></script>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script type="text/javascript" src="../addons/han_hongbao/template/mobile/js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5PESLgvMcSbSUbPjmDKgvGZ3"></script>
+
+<script type='text/javascript' src="../addons/han_hongbao/template/mobile/js/jquery.blockUI.js"></script>
+
+</head>
+<body class="namecard-fillIn">
+
+<div id="ft" class="namecard-page">
+    <div class="fillIn-title"><span style="font-size:18px">发帖</span></div>
+    
+        <div  class="fillIn-column">
+        
+            <div class="fillIn-inner">
+               <div class="fillIn-inner-item"><span class="fillIn-item-title">标题</span>
+                    <input type="text" class="inptext text-left" placeholder="填写发帖标题" name="realname" validate="required" data-requiredMsg="填写发帖标题" value="{$member['realname']}" maxlength="20">
+
+               </div>
+
+               <div class="fillIn-inner-item"> <span class="fillIn-item-title">所属版块</span>
+
+                   {php echo tpl_form_field_category_2level('category', $parent, $children,$_GPC['category']['parentid'], $_GPC['category']['childid']);}
+
+               </div>
+               <span class="fillIn-item-title">内容</span>
+               <div class="fillIn-inner-item">
+                    {php echo tpl_ueditor('content', '123');}
+
+               </div>
+               
+          
+                
+            </div>
+
+        </div>    
+    
+    <div class="create-next create-position" style="position:absolute;margin-top:5px;background:#fff;" id="">
+
+     <a class="weui_btn weui_btn_primary" style="width:30%;float:left;" href="javascript:savePersonInfo()" id="saveBtn">直接发表</a>
+
+     <a class="weui_btn weui_btn_primary" style="display:inline-block;width:30%;float:right;"href="javascript:gjms()" >进入高级模式</a> 
+
+    </div>
+
+
+</div>
+<div id="gjms" class="namecard-page">
+
+    <div class="fillIn-title"><span style="font-size:18px">高级模式</span></div>
+    
+        <div  class="fillIn-column">
+            
+
+              <div class="fillIn-inner-item">
+
+                  <span class="fillIn-item-title">是否启用悬赏</span>
+
+
+                    <input type="radio" name="open_xs" value="1" {if $item['open_xs']=='1'}checked{/if}/>是&nbsp;&nbsp;&nbsp;&nbsp;
+
+		            <input type="radio" name="open_xs" value="0" {if $item['open_xs']=='0'}checked{/if} />否
+
+
+              </div>
+
+            
+
+              <div class="fillIn-inner-item">
+
+                    <span class="fillIn-item-title">悬赏金额</span>
+
+                        <input type="text" class="form-control" id="xsNum" name="xsNum" value="{$item['xsNum']}">
+
+              </div>
+
+              
+
+              <div class="fillIn-inner-item">
+
+                  <span class="fillIn-item-title">是否启用隐藏可见</span>
+
+
+                    <input type="radio" name="open_yc" value="1" {if $item['open_yc']=='1'}checked{/if}/>是&nbsp;&nbsp;&nbsp;&nbsp;
+
+		            <input type="radio" name="open_yc" value="0" {if $item['open_yc']=='0'}checked{/if} />否
+
+
+                </div>
+
+            
+
+              <div class="fillIn-inner-item">
+
+                    <span class="fillIn-item-title">隐藏内容</span>
+
+                        {php echo tpl_ueditor('content_j', $item['content_j']);}
+
+                </div>
+
+
+
+               <div class="fillIn-inner-item">
+
+                    <span class="fillIn-item-title">隐藏内容价格</span>
+
+                        <input type="text" class="form-control" id="gmjf" name="gmjf" value="{$item['gmjf']}">
+
+                </div>
+                
+                <div class="create-next create-position" style="position:absolute;margin-top:5px;background:#fff;" id="">
+
+                <a class="weui_btn weui_btn_primary" style="width:30%;float:left;" href="javascript:savePersonInfo()" id="saveBtn">直接发表</a>
+
+
+               </div>
+
+            
+
+            </div>
+
+        </div>
+
+
+<!--#=end page-->
+
+<input type="hidden" value="" id="cityId"/>
+
+<input type="hidden" value="" id="provinceId"/>
+
+<!--#start JS-->
+
+<script>
+
+    function gjms() {
+		
+		document.getElementById('gjms').style.display='block';
+		document.getElementById('ft').style.display='none';
+
+    }
+	
+	function savePersonInfo() {
+		
+		//document.getElementById('dialog').style.display='none';
+
+    }
+
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+        WeixinJSBridge.call('hideOptionMenu');
+
+    });
+
+
+
+    $("#xuantian").click(function () {
+
+        $("#tianxie").slideToggle("slow");
+
+    });
+
+</script>
+
+<script type="text/javascript" src="../addons/amouse_ecard/style/js/zepto.form.js"></script>
+
+<script type="text/javascript">
+</script>
+</body>
+
+</html>

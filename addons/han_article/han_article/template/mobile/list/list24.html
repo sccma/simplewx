@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>{if !empty($title)} {$title} {elseif !empty($_W['page']['title'])} {$_W['page']['title']}{/if}{if !empty($_W['page']['sitename'])} - {$_W['page']['sitename']}{else} - {$_W['account']['name']}{/if}{if IMS_FAMILY != 'x'} - Powered by WE7.CC{/if}</title>
+
+	<meta name="format-detection" content="telephone=no, address=no">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+	<meta name="apple-touch-fullscreen" content="yes"/>
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="keywords" content="{if empty($_W['page']['keywords'])}{if IMS_FAMILY != 'x'}微擎,微信,微信公众平台,we7.cc{/if}{else}{$_W['page']['keywords']}{/if}" />
+
+	<meta name="description" content="{if empty($_W['page']['description'])}{if IMS_FAMILY != 'x'}公众平台自助引擎（www.we7.cc），简称微擎，微擎是一款免费开源的微信公众平台管理系统，是国内最完善移动网站及移动互联网技术解决方案。{/if}{else}{$_W['page']['description']}{/if}" />
+
+	<link rel="shortcut icon" href="{$_W['siteroot']}{$_W['config']['upload']['attachdir']}/{if !empty($_W['setting']['copyright']['icon'])}{$_W['setting']['copyright']['icon']}{else}images/global/wechat.jpg{/if}" />
+
+        <link href="{$_W['siteroot']}/addons/han_article/css/style.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{MODULE_URL}css/weui.css">
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<style type="text/css">
+	.container{
+		width: 100%;
+		height: 100%;
+		padding: 0;
+	}
+
+	.carousel-caption{
+		left: 0;
+		padding-left: 10px;
+	    text-align: left;
+	    bottom: 0;
+	    width: 100%;
+	    padding-bottom: 10px;
+		background-image: -webkit-linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+		background-image: -o-linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+		background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+
+	}
+
+	.carousel-indicators{
+		width: auto;
+		left: 90%;
+		bottom:10px;
+		position: absolute;
+		right: 15px;
+	}
+	.icon_dot {
+	    display: inline-block;
+	    vertical-align: middle;
+	    width: 6px;
+	    height: 6px;
+	    border-radius: 3px;
+	    background-color: #d0cdd1;
+	}
+	.icon_dot.active {
+	    background-color: #6a666f;
+	}
+	.indicator a, .indicator a:active {
+	    margin-left: 6px;
+	    width: 6px;
+		height: 6px;
+		background: none;
+	}
+	.indicator a.active i,  .indicator a.active i{
+		background-color: #6a666f;
+	}
+	.carousel-indicators .active{
+		background: none;
+	}
+
+</style>
+
+<!--轮播-->
+<div id="carousel-container" class="carousel slide" data-ride="carousel">
+
+
+
+	<div class="carousel-inner" role="listbox">
+		{loop $slide_array $key $row}
+		<div class="item{if $key == 0} active{/if}">
+			<a href="{$row['link']}">
+				<img src="{php echo tomedia($row['thumb']);}" title="{$row['description']}" style="width:100%; vertical-align:middle;">
+			</a>
+			<div class="carousel-caption">
+				{$row['description']}
+
+			</div>
+		</div>
+		{/loop}
+	</div>
+	<div class="carousel-indicators indicator">
+	{loop $slide_array $key2 $row}
+
+		<a href="javascript:;" {if $key2==0}class="active"{/if}><i class="icon_dot"></i></a>
+	{/loop}
+	</div>
+
+</div>
+<script>
+	require(['bootstrap', 'hammer'], function($, Hammer){
+		$('#carousel-container').carousel();
+		var mc = new Hammer($('#carousel-container').get(0));
+		mc.on("panleft", function(ev) {
+			$('#carousel-container').carousel('next');
+		});
+		mc.on("panright", function(ev) {
+			$('#carousel-container').carousel('prev');
+		});
+	});
+</script>
+<!--end轮播-->
+<!--navbar-->
+<style type="text/css">
+	.weui_navbar{
+		padding: 0;
+	}
+	.weui_navbar a{
+	    width: 100%;
+	    display: block;
+	    height: 100%;
+	}
+	.weui_bar_item_on a{
+		color: green;
+	}
+</style>
+
+<div class="bd" style="height: 100%;">
+    <div class="weui_tab">
+        <div class="weui_navbar">
+        	{loop $result $key $nav}
+
+                    <?php
+
+                      $rgrpid = unserialize($nav['rgrpid']);
+
+
+                    ?>
+
+                    {loop $rgrpid $k $v}
+
+
+ {if $v==$groupid}
+            <div class="weui_navbar_item {if $cur_cat==$obj->id}weui_bar_item_on{/if}" onclick="">
+                <a href="{php echo $this->createMobileUrl('index',array('cid' => $nav['id']))}" class="tab_best {if $nav['id']==$cid}tab_best11{/if}">{$nav['name']}</a>
+            </div>
+            {/if}
+
+
+                    {/loop}
+
+                    {/loop}
+
+        </div>
+        <div class="weui_tab_bd">
+				<div class="weui_panel weui_panel_access">
+	        <!-- <div class="weui_panel_hd">图文组合列表</div> -->
+	        <div class="weui_panel_bd">
+
+	        	{loop $list $k $item}
+			            <a href="{$_item['url']}" class="weui_media_box weui_media_appmsg">
+						<?php
+                         $pics = unserialize($item['pics']);
+
+                         ?>
+			                <div class="weui_media_hd">
+							{php $i=0;}
+
+					   {loop $pics $pic}
+
+                       {php $i++ ;}
+
+                       {if $i<2}
+			                    <img class="weui_media_appmsg_thumb" src="{php echo strpos($pic,'http://')===FALSE?($_W['attachurl'].$pic):$pic}" alt="">
+			                </div>
+							{/if}
+
+					  {/loop}
+			                <div class="weui_media_bd">
+			                    <h4 class="weui_media_title">{php echo cutstr($item['title'],15,ture);}</h4>
+			                    <p class="weui_media_desc">{php echo cutstr($item['content'],50,1);}</p>
+			                </div>
+			            </a>
+
+	            {/loop}
+	        </div>
+
+        </div>
+    </div>
+</div>
+
+{template 'footer'}
+
+

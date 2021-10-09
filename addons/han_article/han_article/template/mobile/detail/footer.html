@@ -1,0 +1,28 @@
+<script>require(['bootstrap']);</script>
+<script type="text/javascript">
+	jssdkconfig = {php echo json_encode($_W['account']['jssdkconfig']);} || {};
+	// 是否启用调试
+	jssdkconfig.debug = false;
+	jssdkconfig.jsApiList = [
+		'checkJsApi',
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage',
+		'onMenuShareQQ',
+		'onMenuShareWeibo',
+		'showOptionMenu',
+		'closeWindow',
+		'hideOptionMenu',
+		'hideMenuItems'
+	];    
+    wx.config(jssdkconfig);
+    function preventTouch(event) {
+        event.preventDefault();
+    }
+    document.addEventListener('touchmove', preventTouch);
+
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        //WeixinJSBridge.call('hideOptionMenu');
+    });
+</script>
+</body>
+</html>

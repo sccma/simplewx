@@ -1,0 +1,144 @@
+{template 'common/header'}
+<!-----<ul class="nav nav-tabs">
+<li class="active"><a href="#">模板设置</a></li>
+
+</ul>
+
+<div id="" class="">
+	<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+    <div class="form-group">
+                  <label class="col-xs-12 col-sm-2 col-md-1 control-label">论坛模板</label>
+                  <div class="col-sm-6" style="padding-top:7px;">
+                    <input type="radio" name="is_mb" value="1" {if $config['is_mb']=='1'}checked{/if}/>简洁模板&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type="radio" name="is_mb" value="0" {if $config['is_mb']=='0'}checked{/if} />默认模板&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    </div>
+                    -------
+
+
+				  </div>
+				  <div class="form-group">
+
+                    <div class="col-md-2 col-lg-1">
+                        <input name="submit" type="submit" value="保存" class="btn btn-primary btn-block" />
+                        <input type="hidden" name="token" value="{$_W['token']}" />
+                    </div>
+                </div>
+	</form>
+</div>
+
+----------->
+
+<ul class="nav nav-tabs">
+	<li  {if $operation == 'post'} class="active"{/if}id="nav1"><a href="{php echo $this->createWebUrl('mb', array('op'=>'post'))}">添加</a></li>
+	<li {if $operation == 'display'} class="active"{/if}id="nav2"><a href="{php echo $this->createWebUrl('mb', array('op' => 'display','type'=>'1'))}">列表</a></li>
+</ul>
+
+{if $operation == 'post'}
+<div class="main1">
+	<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				添加幻灯片
+			</div>
+			<div class="panel-body">
+			<!-----<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">显示顺序</label>
+					<div class="col-sm-9 col-xs-12">
+						<input type="text" name="slides[show_sort]"  class="form-control" />
+					</div>
+				</div>------>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label"><span style="color:red">*</span>幻灯片名称</label>
+					<div class="col-sm-9 col-xs-12">
+						<input type="text" name="name" required="required" class="form-control"value="" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">图片</label>
+					<div class="col-sm-9 col-xs-12">
+
+
+					{php echo tpl_form_field_image('thumb','','');}
+
+
+
+						<span class="help-block">建议尺寸：400*180 px</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">链接</label>
+					<div class="col-sm-9 col-xs-12">
+						<input type="text" name="link"  class="form-control" value="" />
+						<span class="help-block">为空则不跳转</span>
+					</div>
+
+				</div>
+				<!-----<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">描述</label>
+					<div class="col-sm-9 col-xs-12">
+						<textarea name="slides" class="form-control" cols="70"></textarea>
+					</div>
+				</div>------>
+			</div>
+		</div>
+		<div class="form-group col-sm-12">
+			<input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" />
+			<input type="hidden" name="token" value="{$_W['token']}" />
+		</div>
+	</form>
+</div>
+{elseif $operation == 'display'}
+
+<div class="main2">
+	<div class="panel panel-default">
+		<!-- <div class="panel-heading">
+		</div> -->
+		<div class="panel-body table-responsive">
+			<form action="" method="post" onsubmit="return formcheck(this)">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<!-- <th style="width:10px;"></th> -->
+									<th style="width:80px;">显示顺序(升序)</th>
+									<th style="width:150px;">名称</th>
+									<th style="width:150px;">图片</th>
+									<th style="width:150px;">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+{if empty($slide)}
+								<tr>
+									<td></td>
+									<td colspan="4">
+										<div class="jumbotron" style="text-align:center;"><h3>暂无幻灯片</h3></span>
+									</td>
+								</tr>
+{else}
+								{loop $slide $slid}
+									<tr>
+										<td>{$slid['id']}</td>
+										<td><span>{$slid['name']}</span></td>
+										<td><a target="_blank" href=""><img style="width:100px;height:100px;" src="{php echo tomedia($slid['thumb']);}" /></a></td>
+										<td>
+								<a href="{php echo $this->createWebUrl('mb', array('op' => 'delete', 'id' => $slid['id']))}" onclick="return confirm('确认删除此幻灯片吗？');return false;" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="fa fa-times"></i></a></td>
+									</tr>
+
+{/loop}
+							{/if}
+
+							</tbody>
+						</table>
+
+			</form>
+		</div>
+
+	</div>
+</div>
+
+{/if}
+
+
+{template 'common/footer'}
+

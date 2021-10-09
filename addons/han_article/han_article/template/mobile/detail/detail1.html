@@ -1,0 +1,1283 @@
+{template 'common/header'}
+<link href="../addons/han_article/css/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+<link rel="stylesheet" type="text/css" href="../addons/han_article/css/page_mp_article_improve.css">
+<link rel="stylesheet" type="text/css" href="../addons/han_article/css/page_mp_article_improve_combo.css">
+<link rel="stylesheet" type="text/css" href="../addons/han_article/css/page.css">
+<link rel="stylesheet" href="../addons/han_article/example/css/reset.css">
+
+<link rel="stylesheet" type="text/css" href="../addons/han_article/css/style12.css">
+<style>
+@charset "utf-8";
+.pingzan a{
+color:#7f7f7f;
+}
+</style>
+<style type="text/css">
+	.like span img,.collect span img{
+	width: 16px;
+    margin-left: 15px;
+	margin-bottom:2px;
+	}
+#add-num,#collect-num{
+    display:none;
+}
+#praise,#collect{
+	    display: inline-block;
+    width: 40px;
+    height: 40px;
+	margin-left: -39px;
+	}
+#praise img.animation,#collect img.animation{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+#add-num .add-animation,#collect-num .add-animation{
+    color: #000;
+    position:absolute;
+    top: -4px;
+    left: 29px;
+    font-size: 15px;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    -moz-opacity:0;
+    animation: mypraise 0.5s ;
+    -moz-animation: mypraise 0.5s ;	/* Firefox */
+    -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+    -o-animation: mypraise 0.5s ;	/* Opera */
+    font-style:normal;
+}
+.praise .hover , #add-num .add-animation.hover , #praise-txt.hover,#collect-num .add-animation.hover{
+    color: #EB4F38;
+}
+/*点赞图标放大动画开始*/
+@keyframes myfirst
+{
+    0%{
+        width:20px;
+        height:20px;
+    }
+    50%{
+        width:30px;
+        height:30px;
+    }
+    100% {
+        width:20px;
+        height:20px;
+    }
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+     0%{
+        width:20px;
+        height:20px;
+    }
+    50%{
+        width:30px;
+        height:30px;
+    }
+    100% {
+        width:20px;
+        height:20px;
+    }
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+     0%{
+        width:20px;
+        height:20px;
+    }
+    50%{
+        width:30px;
+        height:30px;
+    }
+    100% {
+        width:20px;
+        height:20px;
+    }
+}
+
+@-o-keyframes myfirst /* Opera */
+{ 0%{
+        width:20px;
+        height:20px;
+    }
+    50%{
+        width:30px;
+        height:30px;
+    }
+    100% {
+        width:20px;
+        height:20px;
+    }
+}
+/*点赞图标放大动画结束*/
+/*点赞数量加减动画开始*/
+@keyframes mypraise
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-moz-keyframes mypraise /* Firefox */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-webkit-keyframes mypraise /* Safari 和 Chrome */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-o-keyframes mypraise /* Opera */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+/*点赞数量加减动画结束*/
+.media_tool_meta i.read-icon{
+top:3px;
+}
+
+.male{
+    display: inline-block;
+    position: relative;
+    margin-left: 3px;
+    width: 20px;
+    height: 20px;
+	margin-top: 0px;
+}
+
+.lan{
+color:#099eb7;
+}
+
+.bar {
+    display: inline-block;
+    max-width: 100%;
+    font-size: 14px;
+    height: 20px;
+    line-height: 18px;
+    padding: 0 10px;
+    color: #02abec;
+    border: 1px solid #02abec;
+    border-radius: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+</style>
+<style type="text/css">
+	/**********n***********/
+.rich_media_area_primary{
+    padding: 10px 15px 15px;
+}
+.rich_media_title {
+    padding: 0;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-weight: 400;
+    font-size: 20px;
+	color:#000;
+}
+.rich_media_content{
+margin:0;
+}
+.rich_media_content{
+overflow: inherit;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+.rich_media_meta{
+margin: 0;
+    color: #8c8c8c;
+    font-style: normal;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+.rich_media_meta_list {
+    margin-bottom: 18px;
+    line-height: 20px;
+    font-size: 0;
+}
+.rich_media_content{
+    font-size: 16px;
+}
+.fr_ds_pd50{
+padding: 25px;
+}
+.fr_ds_btn, .fr_ds_btn:hover, .fr_ds_btn:focus, .fr_ds_btn:active{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding:0 14px;
+    padding-right: 14px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    line-height: 2.33333333;
+    border-radius: 5px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    overflow: hidden;
+	background-color: #ef4f4f;
+    display: inline-block;
+
+}
+.fr_ds_btn:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(0,0,0,.2);
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.fr_ds_list{
+margin:0;
+}
+.fr_ds_list .fr_ds_number {
+    font-size: 14px;
+    color: #8c8c8c;
+}
+.left{
+float:left;
+}
+.discuss_item .avatar {
+    top: 9px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.discuss_item {
+    position: relative;
+    padding-left: 45px;
+    margin-top: 15px;
+}
+.border-1px-down::after, .border-1px-up::before {
+    display: block;
+    position: absolute;
+    right: 0;
+    border-top: 1px solid #dedfe0;
+    top: 16px;
+    width: 70%;
+    content: " ";
+    pointer-events: none;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.discuss_list{
+margin:0;
+}
+</style>
+<div id="js_article" class="rich_media">
+    <div id="js_top_ad_area" class="top_banner"></div>
+    <div class="rich_media_inner">
+        <div id="page-content">
+            <div id="img-content" class="rich_media_area_primary">
+
+			<!--<div id="" class="user-info border-1px-down">
+				  <a href="{php echo $this->createMobileUrl('home',array('uid' => $detail['uid']));}"><img src="{php echo tomedia($detail['avatar']);}"class="avatar"></a>
+				  <div id="" class="info-section">
+					<span class="user-nick">{$detail['author']}</span>
+					{if  $fan['gender']==1}<img src="../addons/han_article/images/nan.png" class="male">{/if}
+					{if $fan['gender']==2}<img src="../addons/han_article/images/nv.png" class="male">{/if}
+				  </div>
+
+				  <div id="" class="arrow-right"></div>
+			   </div>-->
+
+
+			<h2 class="rich_media_title" id="activity-name">
+			  {if $detail['is_jh']}<label class="blue">精</label>{/if}
+                {$detail['title']}
+            </h2>
+
+            <div class="rich_media_meta_list">
+			 <span class="rich_media_meta rich_media_meta_text">{$detail['author']}</span>
+                <em id="post-date" class="rich_media_meta rich_media_meta_text"style="">
+                    {php echo date('Y-m-d', $detail['createtime'])}
+                </em>
+
+				<!--<span class="rich_media_meta rich_media_meta_text"style="font-size: 12px;margin-left:0;">板块:<span class="lan"style="margin:0;padding:0;"> {$bk['name']}</span></span>-->
+
+
+				<a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname bar" style="color: #02abec;">
+                    {$_W['account']['name']}
+                </a>
+
+                <span  class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">{$account['name']}</span>
+
+
+
+
+                <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                    <div class="profile_inner"><strong class="profile_nickname">{$account['name']}</strong>
+                        <img class="profile_avatar" src="{$_W['attachurl']}qrcode_{$_W['acid']}.jpg" alt="">
+
+                        <p class="profile_meta"><label class="profile_meta_label">微信号</label> <span
+                                class="profile_meta_value">{$account['account']}</span></p>
+
+                        <p class="profile_meta"><label class="profile_meta_label">功能介绍</label> <span
+                                class="profile_meta_value">{$account['description']}</span>
+                        </p></div>
+                    <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                        <i class="profile_arrow arrow_out"></i>
+                        <i class="profile_arrow arrow_in"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="rich_media_content" id="js_content">
+                {$detail['content']}
+            </div>
+
+			<div id="" class="jinghua">
+
+             {if !empty($detail['content_j']) && empty($buy)}浏览隐藏内容需支付{$detail['gmjf']}积分<a {if $_W['openid']==null||$_W['openid']==""}href="javascript:alert('请先扫码登录！')"{else} href="{php echo $this->createMobileUrl('Articlebuy', array('aid' => $detail['id'], 'uid' => $detail['uid']))}"onclick="return confirm('此操作将花费{$detail['gmjf']}积分，确认购买？');"{/if} class="a_demo_one" data-toggle="tooltip" data-placement="top" title="购买隐藏内容？！">付费阅读</a>{/if}
+             {if $_W['openid']!=null||$_W['openid']!=""}
+             {if !empty($buy)||$_W['member']['uid']==$bk['bzuid']||$_W['member']['uid']==$detail['uid']||$_W['member']['uid']==$config['zzuid']} {$detail['content_j']} {/if}{/if}
+
+            </div>
+<style type="text/css">
+				.rich_media_tool{
+				padding-top: 0px;
+				}
+			</style>
+<div id="" class="bianji"style="width: 80%;float: left;margin-left: 15px;">
+
+
+            <div class="rich_media_tool">
+			{if $_W['openid']!=null||$_W['openid']!=""}
+            {if $_W['member']['uid']==$bk['bzuid']||$_W['member']['uid']==$detail['uid']||$_W['member']['uid']==$config['zzuid']}
+                {if $_W['member']['uid']==$detail['uid']}
+                <div class="media_tool_meta tips_global meta_primary">
+                   <a href="{php echo $this->createMobileUrl('Publish', array('id' => $detail['id']))}"><i class="fa fa-edit">编辑</i></a>
+                </div>
+                {/if}
+                {if $_W['member']['uid']==$bk['bzuid']||$_W['member']['uid']==$config['zzuid']}
+                {if $detail['is_zd']}
+                  <div class="media_tool_meta tips_global meta_primary">
+                    <a href="{php echo $this->createMobileUrl('Publish', array('op' => 'delorder','id' => $detail['id']))}"><i class="fa fa-eye">取消置顶</i></a>
+                  </div>
+                {else}
+                   <div class="media_tool_meta tips_global meta_primary">
+                    <a href="{php echo $this->createMobileUrl('Publish', array('op' => 'order','id' => $detail['id']))}"><i class="fa fa-eye">置顶</i></a>
+                  </div>
+                {/if}
+                {if $detail['is_jh']}
+                  <span class="media_tool_meta meta_primary tips_global meta_praise" id="like">
+                    <a href="{php echo $this->createMobileUrl('Publish', array('op' => 'deljh','id' => $detail['id']))}"><i class="fa fa-adjust">取消精华</i></a>
+                  </span>
+                {else}
+                  <span class="media_tool_meta meta_primary tips_global meta_praise" id="like">
+                   <a href="{php echo $this->createMobileUrl('Publish', array('op' => 'addjh','id' => $detail['id']))}"><i class="fa fa-adjust">加精华</i></a>
+                  </span>
+                {/if}
+                {/if}
+                <span class="media_tool_meta meta_primary tips_global meta_praise" id="like">
+                  <a href="{php echo $this->createMobileUrl('Publish', array('op' => 'delete','id' => $detail['id']))}"><i class="fa fa-times">删除</i></a>
+                </span>
+                {/if}
+				{/if}
+
+            </div>
+</div>
+
+ <div id="" class="fr_ds_main fr_ds_pd50">
+     {if $bk['is_ds']}
+	 <a {if $_W['openid']==null||$_W['openid']==""}href="javascript:alert('请先扫码登录！')"{else}href="{php echo $this->createMobileUrl('gods', array('id' => $detail['id']))}" {/if}class="fr_ds_btn">赏</a>
+     {/if}
+	 <div class="clear"></div>
+	 <div id="" class="fr_ds_list">
+		<p class="fr_ds_number">
+		{if $dscount==0}还没有土豪给打赏呢~{else}
+		   <a href="#">{$dscount}</a>人赞赏{/if}
+		</p>
+		<ul class="clearfix">
+            {loop $dscomment $key $dsc}
+                {if $dsc['thumb']}<li><img class="avatar" src="{php echo $this->get_fans_pic($dsc['thumb'], $dsc['openid']);}">+{$dsc['dsnum']}</li>{/if}
+            {/loop}
+		</ul>
+	 </div>
+  </div>
+
+<div class="media_tool_meta tips_global meta_primary left"style="margin-right:15px;">
+					<span class="">阅读</span>
+                    <span id="readNum">{$detail['clickNum']}</span>
+                </div>
+<div class="media_tool_meta tips_global meta_primary left"style="margin-right: 10px; font-size: 14px;">
+
+					<span class="">赞</span>
+                   <span class="praise_num" id="likeNum">{$detail['zanNum']}</span>
+                </div>
+
+
+            <div class="rich_media_tool rigth" id="js_toobar">
+
+
+				<!---举报--->
+				<div id="Alert" class="">
+					<div  class="frame">
+						<div  class="content">
+							<ul class="sheet-item">
+								<li>欺诈骗钱</li>
+								<li>色情暴力</li>
+								<li>广告骚扰</li>
+								<li>其他</li>
+
+							</ul>
+							<div id="quxiao" class="">
+								取消
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div id="addBox" class=""style="display:none;">
+						举报成功，管理员会尽快处理！
+					</div>
+                <div class="tousu">
+					<a >举报</a>
+                </div>
+
+
+
+
+
+                <!--<span class="media_tool_meta meta_primary tips_global meta_praise" id="like">
+                  <a href="{php echo $this->createMobileUrl('zan', array('id' => $detail['id']))}"><i class="icon_praise_gray"></i></a>
+                  <span class="praise_num" id="likeNum">{$detail['zanNum']}</span>
+                </span>
+                <a id="" class="media_tool_meta tips_global meta_extra" href="{php echo $this->createMobileUrl('jubao')}">举报</a></div>-->
+            </div>
+<style type="text/css">
+
+	.comment-actions{
+	height: 22px;
+    font-size: 12px;
+    color: #bbb;
+    margin: 4px 0 0 0;
+    padding-bottom: 7px;
+    padding-right: 5px;
+    line-height: 22px;
+	}
+.comment-actions span{
+display: inline-block;
+   position: relative;
+    z-index: 2;
+    padding-top: 1px;
+    padding-right: 7px;
+    height: 100%;
+}
+.hui .me{
+display: inline-block;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    background: url(../addons/han_article/images/dian.png) center center no-repeat;
+    background-size: 100% 100%;
+	margin-right: 12px;
+}
+
+.hui .rp{
+  display: inline-block;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    background: url(../addons/han_article/images/liuyan.png) center center no-repeat;
+    background-size: 100% 100%;
+margin-right: 10px;
+}
+.icon_praise_gray {
+    background:url(../addons/han_article/images/zan.png) no-repeat 0 0;
+	    width: 16px;
+    height: 16px;
+	    background-size: 100% 100%;
+		top: 2px;
+ }
+</style>
+
+            <div class="rich_media_area_extra">
+                <div class="mpda_bottom_container" id="js_bottom_ad_area"></div>
+                <div id="js_iframetest" style="display:none;"></div>
+                 <a class="pull-right" style="color: #b9b9b9" href="{php echo $this->createMobileUrl('pcindex', array('op' => 'post'))}"></a>
+            </div>
+
+            <div class="rich_media_extra" id="js_cmt_area" style="display: block;">
+                <div class="discuss_container" id="js_cmt_main" style="display: block;">
+                    <div class="rich_tips title_tips discuss_title_line border-1px-down comment-list"style="margin-left:5px;">
+                        <span class="text">精选评论</span>
+                    </div>
+                    <p class="tips_global tc title_bottom_tips" id="js_cmt_nofans1" style="display:none;">关注该公众号可参与评论</p>
+
+                    <ul class="discuss_list" id="js_cmt_list">
+                    {php $i=0;}
+                        {loop $cList $comment}
+
+                        <li class="discuss_item" id="{$comment['id']}">
+
+
+                            <div class="discuss_opr"style="padding-top: 2px;font-size: 12px; color: #bbb;">
+
+                                <span class="">{php $i++ ;echo $i;}</span>楼
+                            </div>
+
+                            <div class="user_info">
+                                <strong class="nickname"style=" width: 100%;">{$comment['author']}</strong>
+                                {if $comment['thumb']}<img class="avatar" src="{$comment['thumb']}">{/if}
+                            </div>
+                            <div class="discuss_message"><span class="discuss_status"></span>
+                                <div class="discuss_message_content">
+                                    {$comment['js_cmt_input']}
+                                </div>
+                            </div>
+							<div id="" class="comment-actions">
+								<span class="discuss_extra_info"> {php echo get_timedays($comment['createtime'])} </span>
+								<div id="" class="hui"style="float:right;">
+
+
+
+								<div id="" class="pingzan">
+                                <a onclick="zancom({$comment['id']});">
+									<span class="praise"id="praise{$comment['id']}">{if $comment['zanNum']>0}<img   src="../addons/han_article/images/zan11.png" id="praise_img{$comment['id']}" >{else}<img src="../addons/han_article/images/zan.png" id="praise_img{$comment['id']}" >{/if}</span>
+
+									<span class="add-num"><em>+1</em></span>
+									<span class="praise_num11" id="praise_num{$comment['id']}" style="margin-right: 3px;">{$comment['praise_num']} </span>
+									</a>
+                                </div>
+								<!------------>
+								<a {if $_W['openid']==null||$_W['openid']==""}href="javascript:alert('请先扫码登录！')"{else}href="{php echo $this->createMobileUrl('detail', array('op'=>'recom','cmid' => $comment['id'],'id'=>$detail['id']))}" {/if}><span class="rp" id=""></span></a>
+								<span class="me"></span>
+
+									</div>
+							</div>
+
+                            {if $comment['js_cmt_reply']}
+                            <div class="reply_result">
+                                <div class="nickname">版主回复</div>
+                                <div class="discuss_message">
+                                    <div class="discuss_message_content">{$comment['js_cmt_reply']} </div>
+                                </div>
+                                 <p class="discuss_extra_info"> {php echo get_timedays($comment['updatetime'])}</p>
+                            </div>
+                            {/if}
+
+
+
+                        </li>
+
+                        {/loop}
+                    </ul>
+                </div>
+
+                <div class="tips_global rich_split_tips tc" id="js_cmt_nofans2" style="display:none;">
+                    关注该公众号可参与评论
+                </div>
+
+                <p class="discuss_icon_tips rich_split_tips tr" id="js_cmt_addbtn2" style="display:none">
+                    <a href="{php echo $this->createMobileUrl("comment", array("artid" => $detail['id'],'openid'=>$openid))}">写评论
+                    <img class="icon_edit" src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/icon_edit25ded2.png" alt="">
+                    </a>
+                </p>
+
+                <p class="rich_split_tips tc tips_global" id="js_cmt_tips" style="display: none;"></p>
+                <div class="rich_tips tips_global loading_tips" id="js_cmt_loading" style="display: none;">
+                    <img src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/icon_loading_white2805ea.gif" class="rich_icon icon_loading_white" alt="">
+                    <span class="tips">加载中</span>
+                </div>
+           <!-----     <div class="rich_tips with_line tips_global" id="js_cmt_statement" style="display: block;">
+                    <span class="tips">以上评论由公众帐号筛选后显示</span>
+                </div>
+
+                <p class="rich_split_tips tc" id="js_cmt_qa" style="display: block;">
+                    <a href="http://kf.qq.com/touch/sappfaq/150211YfyMVj150313qmMbyi.html?scene_id=kf264">
+                        了解评论功能详情
+                    </a>
+                </p>
+				---->
+            </div>
+        </div>
+            <div id="js_pc_qr_code" class="qr_code_pc_outer" style="display:none;">
+                <div class="qr_code_pc_inner">
+                    <div class="qr_code_pc">
+                        <img src="{$_W['attachurl']}qrcode_{$_W['acid']}.jpg?time=1428632464" class="qr_code_pc_img">
+                        <p>微信扫一扫<br>关注该公众号</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id='audiocontainer'></div>
+
+    {template 'adv'}
+
+ </div>
+
+
+</div>
+
+<style type="text/css">
+	.com_form .input11{
+    float: left;
+    height: 141px;
+    line-height: 38px;
+    font-size: 18px;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid#ddd;
+	border-radius: 0;
+    margin: 0;
+    width: 100%;
+	margin-top: 3px;
+}
+
+#com_form{
+    overflow: hidden;
+	background: rgba(0,0,0,.6);
+	width:100%;
+	z-index:888;position:fixed; bottom:0px;
+	height:100%;
+}
+#com_form22{
+    overflow: hidden;
+	background: rgba(0,0,0,.6);
+	width:100%;
+	z-index:888;position:fixed; bottom:0px;
+	height:100%;
+}
+.com_form{
+position:relative;
+overflow: hidden;
+}
+.comment .com_form #js_cmt_submit{
+
+    float: right;
+
+    line-height: 25px;
+
+    background: #0099ff;
+    margin-top: 10px;
+	padding:0 auto;
+	margin-right:10px;
+	border: 0;
+    border-radius: 4px;
+    width: 81px;
+    height: 35px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+
+}
+.qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid; }
+.qqFace table td{padding:0px;}
+.qqFace table td img{cursor:pointer;border:1px #fff solid;}
+.qqFace table td img:hover{border:1px #0066cc solid;}
+
+.rich_media_content p {font-size: 15px;}
+
+	.com_form{
+margin: 13px;
+    border-radius: 2px;
+	height: 200px;
+	background: #fff;
+	overflow: visible;
+	}
+	.qu{
+
+    float: right;
+    height: 34px;
+    line-height: 25px;
+    text-align: center;
+    background: #a2a2a2;
+    margin-top: 10px;
+	padding:0 auto;
+	margin-right:10px;
+
+	}
+	.qu{
+margin-right: 10px;
+    border: 1px solid #d4d4d4;
+    color: gray;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 81px;
+    height: 35px;
+    font-size: 16px;
+    text-align: center;
+}
+	.show_p{
+	background: rgba(0,0,0,.6);
+
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    bottom: 0;
+    top: 0px;
+    right: 0;
+    z-index: 9999;
+	display:none;
+	}
+.output{
+    position: fixed;
+    margin:auto;left:0; right:0; top:20%; bottom:0;
+    background: #FFD34C;
+    padding: 10px;
+    z-index: 9999;
+    border-radius: 10px;
+    width: 260px;
+    height: 250px;
+    text-align: center;
+}
+.output p{
+color:#ED8A37;
+margin:5px;
+}
+.outimg{
+    width: 180px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 auto;
+
+}
+</style>
+ <!--回复评论-->
+ {if $op=='recom'}
+                            <div class="comment"id="com_form22">
+                              <div class="com_form">
+        	                   <textarea class="input11" id="js_cmt_input{$cmid}" name="js_cmt_input"placeholder="回复评论"autofocus="autofocus"></textarea>
+        	                   <a id="js_cmt_submit" class="btn" onclick="recom({$cmid});">发送  </a>
+			                   <a class="btn qu " href="javascript:;">取消</a>
+			                   <span class="emotion"id="em"></span>
+                              </div>
+                            </div>
+							{/if}
+<!--弹出二维码-->
+<div id="" class="show_p"onclick="$(this).hide();">
+	<div id="" class="output">
+	      <p>长按识别关注公众号</p>
+		<div id="" class="outimg">
+			<img src="{$_W['attachurl']}qrcode_{$_W['acid']}.jpg?time=1428632464" width="180px" >
+		</div>
+		<div id="" class=""style="font-size: 15px;">
+			 <p>{$_W['account']['name']}</p>
+		</div>
+	</div>
+</div>
+<!--弹出评论-->
+<div class="comment"id="com_form"style="display:none;">
+        <div class="com_form">
+        	<textarea class="input11" id="js_cmt_input" name="js_cmt_input"placeholder="我也来说一句.."autofocus="autofocus"></textarea>
+        	 <a id="js_cmt_submit" class="btn" href="javascript:;">发送  </a>
+			 <a class="btn qu " href="javascript:;">取消</a>
+			 <span class="emotion"id="tion"></span>
+        </div>
+     </div>
+<style type="text/css">
+	.bottom a{
+	color:#464646;
+	font-size:15px;
+	}
+</style>
+<!--底部导航-->
+<div id="" class="bottom">
+
+					  <div class="reply post-btn-v3"{if $_W['openid']==null||$_W['openid']==""}onclick="javascript:alert('请先扫码登录！')"{else} id="js_cmt_addbtn1"{/if}>
+                        <a>
+
+                        </a>
+
+
+					  </div>
+					  <div class="like post-btn-v3"{if $_W['openid']==null||$_W['openid']==""}onclick="javascript:alert('请先扫码登录！')"{else} id="zan"{/if}>
+					  <span id="praise">{if $zan['num']>0}<img src="../addons/han_article/images/zan11.png" id="praise-img">{else}<img src="../addons/han_article/images/zan.png" id="praise-img">{/if}</span>
+					  <span class="media_tool_meta meta_primary tips_global meta_praise" id="like11"></span>
+
+					  <span id="add-num"><em>+1</em></span>
+
+					  </div>
+                     <div class="collect post-btn-v3"{if $_W['openid']==null||$_W['openid']==""}onclick="javascript:alert('请先扫码登录！')"{else} id="shou"{/if}>
+					 <span id="collect">{if empty($shc)}<img src="../addons/han_article/images/shoucang11.png"  id="collect-img">{else}<img src="../addons/han_article/images/shoucang22.png" id="collect-img">{/if}</span>
+					 <span id="collect-num"><em>已收藏</em></span>
+
+					  </div>
+					   <div class="more post-btn-v3"id="more">
+							<!---<a href="{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=index&m=han_article">返回</a>-->
+					  </div>
+
+
+</div>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"  charset="utf-8"></script>
+<script type="text/javascript" src="http://qy.51vj.cn/js/layer.m/layer.m.js"></script>
+<script type="text/javascript" src="../addons/han_article/example/js/jquery.qqFace.js"></script>
+<script type="text/javascript" src="../addons/han_article/css/show.js"></script>
+<script type="text/javascript">
+	//
+	$('.bar').click(function(){
+	$(".show_p").css("display","block");
+	})
+</script>
+<script type="text/javascript">
+	//
+	$('#more').click(function(){
+	window.location.href="{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=index&m=han_article";
+	});
+</script>
+<script type="text/javascript">
+	//
+		$('.qu').click(function(){
+	  $('#com_form').css('display','none');
+	});
+	$('.qu').click(function(){
+	  $('#com_form22').css('display','none');
+	});
+   $('#js_cmt_list').on('click','#js_cmt_addbtn22',function(){
+     $('#com_form22').css('display','block');
+
+   });
+function recom(cmid) {
+      var id="{$detail['id']}";
+      var data = {};
+      data['js_cmt_input'] = $("#js_cmt_input"+cmid).val();
+      data['articleid'] =id;
+	  data['status'] =1;
+	  data['op'] ='recom';
+	  data['cmid'] =cmid;
+      var ajaxurl="{php echo murl('entry//ajaxcomment',array('m'=>'han_article'),true)}";
+      $.ajax({
+        url: ajaxurl,
+        type: "post",
+        data : data,
+        dataType: "json",
+        success: function (res) {
+         console.log(res);
+	     location.href='{php echo $this->createMobileUrl("detail",array("id" =>$detail["id"]),true)}';
+
+        },
+        error: function (r) {
+         console.log(r);
+        }
+      });
+    }
+function zancom(id){
+	  var praise_img = $("#praise_img"+id);
+	  var text_box = $("#praise_num"+id);
+	  var num=parseInt($("#praise_num"+id).text());
+
+	  if(praise_img.attr("src") === ("/addons/han_article/images/zan11.png")){
+
+	    $('#praise'+id).html("<img src='../addons/han_article/images/zan.png'  class='animation'  id='praise_img"+id+"'/>");
+        $.post("{php echo murl('entry//zan',array('m'=>'han_article'),true)}",{op:"dz",num:-1,aid:"{$detail['id']}",id:id},
+	     function(data){
+             $("#praise_num"+id).text(data.znum)
+	     },"json")
+
+	  }else if(praise_img.attr("src") === ("/addons/han_article/images/zan.png")){
+
+				$('#praise'+id).html("<img src='../addons/han_article/images/zan11.png'  class='animation' id='praise_img"+id+"'/>");
+				$.post("{php echo murl('entry//zan',array('m'=>'han_article'),true)}",{op:"dz",num:1,aid:"{$detail['id']}",id:id},
+			   function(data){
+
+                $("#praise_num"+id).text(data.znum)
+			   },"json")
+			}
+
+
+    }
+
+
+
+</script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+  $("textarea").focus(function(){
+    $("textarea").css("background-color","#fff");
+  });
+  $("#js_cmt_addbtn1").click(function(){
+    $("textarea").focus();
+  });
+
+});
+</script>
+<script>
+	/* @author:Romey
+	 * 动态收藏
+	*/
+	$(function(){
+		$("#shou").click(function(){
+			var praise_img = $("#collect-img");
+			var text_box = $("#collect-num");
+			/*var praise_txt = $("#like11");*/
+			/*var num=$("#collect-num").text();*/
+			if(praise_img.attr("src") == ("/addons/han_article/images/shoucang22.png")){
+				$('#collect').html("<img src='../addons/han_article/images/shoucang11.png' id='collect-img' class='animation' />");
+				/*praise_txt.removeClass("hover");*/
+				text_box.show().html("<em class='add-animation'>已取消</em>");
+				$(".add-animation").removeClass("hover");
+               $.post("{php echo murl('entry//shc',array('m'=>'han_article'),true)}",{op:"del",aid:"{$detail['id']}"},
+			   function(data){
+			    console.log(data);
+
+			   },"json")
+
+			}else{
+				$('#collect').html("<img src='../addons/han_article/images/shoucang22.png' id='collect-img' class='animation' />");
+				/*praise_txt.addClass("hover");*/
+				text_box.show().html("<em class='add-animation'>已收藏</em>");
+				$(".add-animation").addClass("hover");
+
+				$.post("{php echo murl('entry//shc',array('m'=>'han_article'),true)}",{op:"add",aid:"{$detail['id']}"},
+			   function(data){
+			    console.log(data);
+
+			   },"json")
+			}
+		});
+
+
+	})
+</script>
+
+
+<script>
+	/* @author:Romey
+	 * 动态点赞
+	*/
+	$(function(){
+		$("#zan").click(function(){
+			var praise_img = $("#praise-img");
+			var text_box = $("#add-num");
+			var praise_txt = $("#like11");
+			var num=parseInt($("#likeNum").text());
+			if(praise_img.attr("src") == ("/addons/han_article/images/zan11.png")){
+				$('#praise').html("<img src='../addons/han_article/images/zan.png' id='praise-img' class='animation' />");
+				praise_txt.removeClass("hover");
+				text_box.show().html("<em class='add-animation'>-1</em>");
+				$(".add-animation").removeClass("hover");
+				num -=1;
+               $.post("{php echo murl('entry//zan',array('m'=>'han_article'),true)}",{num:-1,id:"{$detail['id']}"},
+			   function(data){
+			    console.log(data);
+				$("#likeNum").text(data.znum)
+			   },"json")
+
+			}else{
+				$('#praise').html("<img src='../addons/han_article/images/zan11.png' id='praise-img' class='animation' />");
+				praise_txt.addClass("hover");
+				text_box.show().html("<em class='add-animation'>+1</em>");
+				$(".add-animation").addClass("hover");
+				num +=1;
+				$.post("{php echo murl('entry//zan',array('m'=>'han_article'),true)}",{num:1,id:"{$detail['id']}"},
+			   function(data){
+			    console.log(data);
+			    $("#likeNum").text(data.znum)
+			   },"json")
+			}
+		});
+
+
+	})
+</script>
+<script type="text/javascript">
+$(function(){
+	$('#tion').qqFace({
+		id : 'facebox',
+		assign:'js_cmt_input',
+		path:'/addons/han_article/example/arclist/'	//表情存放的路径
+	});
+		//var str = $("#js_content").html();
+		//$("#js_content").html(replace_em(str));
+$('.discuss_message_content').each(function(){
+	$(this).html(
+	  $(this).html().
+			replace(/\[em_([0-9]*)\]/g,'<img src="../addons/han_article/example/arclist/$1.gif" border="0" />')
+		)
+});
+
+  console.log(111111);
+
+
+	});
+function replace_em(str){
+	str = str.replace(/\</g,'&lt;');
+	str = str.replace(/\>/g,'&gt;');
+	str = str.replace(/\n/g,'<br/>');
+	str = str.replace(/\[em_([0-9]*)\]/g,'<img src="../addons/han_article/example/arclist/$1.gif" border="0" />');
+	return str;
+
+}
+</script>
+
+
+
+   <script type="text/javascript">
+        String.prototype.html = function (encode) {
+            var replace = ["&#39;", "'", "&quot;", '"', "&nbsp;", " ", "&gt;", ">", "&lt;", "<", "&amp;", "&", "&yen;", "¥"];
+            if (encode) {
+                replace.reverse();
+            }
+            for (var i = 0, str = this; i < replace.length; i += 2) {
+                str = str.replace(new RegExp(replace[i], 'g'), replace[i + 1]);
+            }
+            return str;
+        };
+
+        window.isInWeixinApp = function () {
+            return /MicroMessenger/.test(navigator.userAgent);
+        };
+    </script>
+
+<script  src="../addons/han_article/example/js/jquery.min.js"></script>
+<script type="text/javascript" src="../addons/han_article/example/js/jquery.qqFace.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#em').qqFace({
+		id : 'facebox',
+		assign:'js_cmt_input{$cmid}',
+		path:'/addons/han_article/example/arclist/'	//表情存放的路径
+	});
+		//var str = $("#js_content").html();
+		//$("#js_content").html(replace_em(str));
+		var str = $("#js_content").html();
+		$("#js_content").html(replace_em(str));
+	});
+function replace_em(str){
+	//str = str.replace(/\</g,'&lt;');
+	//str = str.replace(/\>/g,'&gt;');
+	//str = str.replace(/\n/g,'<br/>');
+	str = str.replace(/\[em_([0-9]*)\]/g,'<img src="../addons/han_article/example/arclist/$1.gif" border="0" />');
+	return str;
+
+}
+</script>
+
+
+
+
+
+
+<script>
+    (function () {
+        $("#js_cmt_submit").click(function() {
+            var id="{$detail['id']}";
+            if ($("#js_cmt_input").val() == '') {
+                layer.open({
+                    content: '请填写金额',
+                    time: 200
+                });
+                return false;
+            }
+            var data = {};
+            data['js_cmt_input'] = $("#js_cmt_input").val();
+            data['articleid'] =id;
+			data['status'] =1;
+            var ajaxurl="{php echo murl('entry//ajaxcomment',array('m'=>'han_article'),true)}";
+            $.ajax({
+                url: ajaxurl,
+                type: "post",
+                data : data,
+                dataType: "json",
+                success: function (res) {
+                    console.log(res);
+					location.href='{php echo $this->createMobileUrl("detail",array("id" =>$detail["id"]),true)}';
+
+                },
+                error: function (r) {
+                    console.log(r);
+                }
+            });
+        });
+
+        $(".discuss_del").click(function() {
+            var d = {};
+            d['commentid'] =$(this).parent().attr("wuid");
+             $.ajax({
+                url: "{php echo murl('entry//delcomment',array('m'=>'han_article'),true)}",
+                type: "post",
+                data : d,
+                dataType: "json",
+                success: function (res) {
+                    console.log(res);
+                    if(res && res.code ===200){
+                        layer.open({
+                            content: res.msg,
+                            time: 50
+                        });
+                        location.reload(true);
+                    }else{
+                        layer.open({
+                            content: res.msg,
+                            time: 200
+                        });
+                    }
+                },
+                error: function (r) {
+                    console.log(r);
+                }
+            });
+        });
+
+    })();
+</script>
+<script>
+// 自定义分享数据的调用, 确保 sharedata 对象存在.
+sharedata = {
+	success: function(){
+	     {php load()->model('mc');}
+
+		{php $handsel = array('module' => 'han_article', 'sign' => md5(iserializer(array('id' => $id))), 'action' => 'share', 'credit_value' => $bk['jf0'], 'credit_log' => '分享文章,赠送积分');}
+
+		{php $formuid = -1;}
+
+		{php $msg = mc_handsel($_W['member']['uid'], $formuid, $handsel, $_W['uniacid']);}
+
+		if({$msg}==1){
+
+        alert("分享文章成功，积分+{$bk['jf0']}");
+
+		} else {
+                  //  alert("{$msg['message']}");
+                }
+	}
+};
+
+</script>
+{template 'footer'}
